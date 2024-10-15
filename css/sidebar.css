@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-blue: #4A90E2;
+    --primary-green: #9DC183;
+    --secondary-gray: #F5F5F5;
+    --accent-orange: #FFA07A;
+    --text-color: #333333;
+    --background: #ffffff;
+}
+
+body {
+    font-family: 'Roboto', 'Helvetic Neue', Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15.625rem;
+    height: 100%;
+    background-color: var(--background);
+    padding: 1.25rem;
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 3.125rem;
+    height: 50px;
+    margin-right: .625rem;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item {
+    margin-bottom: .625rem;
+}
+
+.menu-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    padding: .625rem;
+    border-radius: .3125rem;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: var(--secondary-gray);
+}
+
+.active {
+    background-color: var(--secondary-gray);
+    color: var(--primary-blue);
+    font-weight: 500;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.menu a i {
+    margin-right: .625rem;
+    width: 1.25rem;
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    max-width: 31.25rem;
+    width: 	100%;
+    background-color: #f5f5f5;
+    border-radius: .3125rem .9375rem;
+    padding: .3125rem .9375rem;
+    box-shadow: 0 .125rem .3125rem rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    padding: .625rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .625rem;
+}
+
+.search-box button i {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: #333;
+}
