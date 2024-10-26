@@ -1,0 +1,139 @@
+:root {
+    --sidebar-width: 260px;
+    --primary-blue: #12137c;
+    --card-border-radius: 10px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo-section img {
+    height: 40px;
+}
+
+.nav-link {
+    color: #666;
+    padding: 15px 20px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.user-profile {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.user-profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+}
+
+.dashboard-header {
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card {
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.stat-card.primary {
+    background-color: var(--primary-blue);
+}
+
+.stat-card.dark {
+    background-color: #1a1a1a;
+}
+
+.stat-card.teal {
+    background-color: #2c5282;
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+.stat-card small {
+    opacity: 0.8;
+}
+
+.chart-card {
+    background-color: white;
+    border-radius: var(--card-border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    max-width: 300px;
+    width: 100%;
+}
+
+.bed-occupancy {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 15px;
+}
+
+.see-details {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.see-details:hover {
+    background-color: #f8f9fa;
+}

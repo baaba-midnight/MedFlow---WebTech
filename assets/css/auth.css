@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif; /* Corrected font name and added fallback */
+}
+
+html, body {
+    min-height: 100vh; /* Added to ensure full height */
+    background-color: #05076a;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+.main-box {
+    display: flex;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px; /* Added max-width for better responsiveness */
+    height: 90vh;
+    min-height: 600px; /* Added min-height to prevent too small height */
+}
+
+.image-container {
+    width: 40%; /* Increased from 20% for better proportion */
+    display: flex; /* Added for better image handling */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+.logo {
+    width: 120px; /* Increased from 50px */
+    height: auto; /* Changed to auto for proper aspect ratio */
+    margin-bottom: 20px; /* Added spacing */
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Added to maintain aspect ratio */
+}
+
+.form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px; /* Added padding */
+    background-color: #ffffff;
+    border-radius: 0 10px 10px 0;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.form-container > div {
+    width: 100%;
+    max-width: 500px; /* Added max-width for better readability */
+    margin: 0; /* Center the form content */
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Increased from 5px */
+    margin-bottom: 20px; /* Added spacing between sections */
+}
+
+.form-container h6 {
+    margin: 20px 0 15px; /* Added proper spacing */
+    font-size: 1.2rem; /* Added explicit size */
+    font-weight: 500;
+    border-bottom:  1px solid #666;
+    padding-bottom: 10px;
+}
+
+.form-container > h6:first-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin: 20px 0 0;
+}
+
+.form-container p {
+    margin-bottom: 20px;
+    color: #666;
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    color: #333;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd; /* Changed from 2px solid black */
+    font-size: 14px;
+}
+
+form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.btn {
+    background-color: #0f033d;
+    color: #ffffff;
+    font-weight: 500;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+    color: #888;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.btn:hover {
+    background-color: rgba(15, 3, 61, 0.9);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.checkbox input {
+    width: auto;
+}
+
+.checkbox p {
+    margin: 0;
+}
+
+/* Added responsive design */
+@media (max-width: 768px) {
+    .image-container {
+        display: none; /* Hide image on mobile */
+    }
+    
+    .form-container {
+        border-radius: 10px;
+    }
+    
+    .main-box {
+        width: 100%;
+    }
+}
