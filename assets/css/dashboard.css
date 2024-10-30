@@ -22,7 +22,9 @@ body {
 
 .logo-section {
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    flex-direction: row;
 }
 
 .logo-section img {
@@ -41,20 +43,56 @@ body {
 }
 
 .user-profile {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 20px;
+    position: relative;
+    color: white;
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
     background-color: var(--primary-blue);
     color: white;
-    border-radius: 10px 10px 0 0;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
 }
 
-.user-profile img {
-    width: 60px;
-    height: 60px;
+.profile-image {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 2px solid white;
+    overflow: hidden;
+    border: 4px solid white;
+}
+
+.profile-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details h6 {
+    margin: 60px 0 5px;
+    font-size: 1.5em;
+} 
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.profile-details a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-details a:hover {
+    text-decoration: underline;
 }
 
 /* Main Content Styles */
