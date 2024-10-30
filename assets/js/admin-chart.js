@@ -46,3 +46,17 @@ const chartPatient = new Chart(patientStatus, {
         }
     }
 });
+
+// Bed Occupancy Chart
+var bedOccupancy = document.getElementById('bed-occupancy-chart').getContext('2d');
+new Chart(bedOccupancy, {
+    type: 'doughnut',
+    data: {
+        labels: ["Occupied", "Available"],
+        datasets: [{
+            label: 'Bed Occupancy',
+            data: [76, 24],
+            backgroundColor: ["#007bff", "#e9ecef"]
+        }]
+    }
+});

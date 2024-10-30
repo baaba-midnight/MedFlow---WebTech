@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
 <body>
-    <?php include "./templates/sidebar.php"; ?>
+    <?php include "../../templates/admin-sidebar.php"; ?>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -29,7 +29,7 @@
         <!-- Stats Row -->
         <div class="row">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="stat-card primary">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="stat-card dark">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -53,21 +53,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class='col-md-4'>
-                <div class="bed-occupancy">
-                    <h6 class="mb-3">Bed Occupancy</h6>
-                    <h3 class="mb-3">76%</h3>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 76%"></div>
-                    </div>
-                    <small class="text-muted d-block mt-2">Updated: Just Now</small>
-                </div>
-            </div>
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="stat-card dark">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -80,7 +69,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="stat-card" style="background-color: #2F4F4F">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -98,16 +87,18 @@
 
         <!-- Charts Row -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="chart-card">
                     <h6 class="mb-4">Patient Status</h6>
                     <canvas id="patient-status" width="auto" height="300px" border-radius=8px></canvas>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="chart-card">
-                    <h6 class="mb-4">Staff Distribution</h6>
-                    <canvas id="staff-distribution" width="auto" height="100px" border-radius=8px></canvas>
+
+            <div class='col-md-6'>
+                <div class="bed-occupancy">
+                    <h6 class="mb-4">Bed Occupancy</h6>
+                    <canvas id="bed-occupancy-chart"></canvas>
+                    <small class="text-muted d-block mt-2">Updated: Just Now</small>
                 </div>
             </div>
         </div>
