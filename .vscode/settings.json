@@ -9,9 +9,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "username": "root",
-            "database": "myproject",
             "name": "hmsWebTech",
+            "database": "hospital_management",
+            "username": "root",
             "password": ""
         }
     ]

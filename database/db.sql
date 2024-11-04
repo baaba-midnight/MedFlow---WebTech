@@ -2,12 +2,6 @@ DROP DATABASE IF EXISTS hospital_management;
 CREATE DATABASE hospital_management;
 USE hospital_management;
 
-
-
-DROP DATABASE IF EXISTS hospital_management;
-CREATE DATABASE hospital_management;
-USE hospital_management;
-
 CREATE TABLE Patients (
     patient_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,

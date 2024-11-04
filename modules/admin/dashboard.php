@@ -13,6 +13,7 @@
 
     <!-- Custom Dashboard Stylesheet -->
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/modal.css">
 </head>
 <body>
     <?php include "../../templates/admin-sidebar.php"; ?>
@@ -37,7 +38,7 @@
                                 <h2>2,234</h2>
                                 <small>+20 more patients than last month</small>
                             </div>
-                            <a href="#" class="see-details align-self-start">See Details</a>
+                            <button class="see-details align-self-start" id="active-patients">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
                                 <h2>100</h2>
                                 <small>+10 more patients than last month</small>
                             </div>
-                            <a href="#" class="see-details align-self-start">See Details</a>
+                            <button class="see-details align-self-start">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +65,7 @@
                                 <h2>50</h2>
                                 <small>18th October 2024</small>
                             </div>
-                            <a href="#" class="see-details align-self-start">See Details</a>
+                            <button class="see-details align-self-start">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                                 <h2>150</h2>
                                 <small>+20 more than last month</small>
                             </div>
-                            <a href="#" class="see-details align-self-start">See Details</a>
+                            <button class="see-details align-self-start">See Details</button>
                         </div>
                     </div>
                 </div>
@@ -102,10 +103,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal See Details -->
+        <div class="modal" id="myModal">
+            <!-- Modal Content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../assets/js/admin-chart.js"></script>
+    <script src="../../assets/js/admin-modal.js"></script>
 </body>
 </html>
