@@ -21,4 +21,6 @@ window.addEventListener("click", (event) => {
     }
 });
 
-// Store data for each section
+// check the content of the modal box 
+// and display the respective information from the php
+
