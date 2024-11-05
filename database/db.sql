@@ -7,7 +7,8 @@ CREATE TABLE Patients (
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     date_of_birth DATE NOT NULL,
-    gender ENUM('M', 'F', 'Other') NOT NULL,
+    gender ENUM('M', 'F') NOT NULL,
+    `status` ENUM('inpatient', 'outpatient', 'discharged') NOT NULL,
     contact_number VARCHAR(15) NOT NULL,
     address TEXT NOT NULL,
     emergency_contact_name VARCHAR(100) NOT NULL,
@@ -61,8 +62,6 @@ CREATE TABLE DoctorDepartment (
     FOREIGN KEY (department_id) REFERENCES Departments(department_id),
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
-
-
 
 CREATE TABLE Medications (
     medication_id VARCHAR(10) PRIMARY KEY,
@@ -130,34 +129,34 @@ CREATE TABLE LabResults (
     FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
 );
 
-INSERT INTO Patients (patient_id, first_name, last_name, date_of_birth, gender, contact_number, address, emergency_contact_name, emergency_contact_number, insurance_provider, insurance_policy_number) VALUES
-(1,'Kwabena', 'Ansah', '1985-03-15', 'M', '+233241234569', 'Adabraka, Accra', 'Akua Ansah', '+233241234570', 'NHIS', 'NHIS123456'),
-(2,'Akua', 'Mensah', '2000-07-22', 'F', '+233551234569', 'Asylum Down, Accra', 'Yaw Mensah', '+233551234570', 'NHIS', 'NHIS789012'),
-(3,'Joel', 'Owusu', '1978-11-30', 'M', '+233271234569', 'Kaneshie, Accra', 'Godfred Owusu', '+233271234570', NULL, NULL),
-(4,'Jonathan', 'Addo', '2005-04-18', 'M', '+233541234569', 'Dansoman, Accra', 'Cosmos Addo', '+233541234570', 'Nationwide', 'N8886245136'),
-(5,'Joy', 'Amoah', '2003-09-25', 'F', '+233201234569', 'East Legon, Accra', 'Jeremy Amoah', '+233201234570', 'NHIS', 'NHIS567890'),
-(6,'Akua', 'Tetteh', '1970-01-12', 'F', '+233241234571', 'Labadi, Accra', 'Kojo Tetteh', '+233241234572', NULL, NULL),
-(7,'Kofi', 'Asante', '2000-06-28', 'M', '+233551234571', 'Osu, Accra', 'John Asante', '+233551234572', 'Nationwide', 'N7776214589'),
-(8,'Emelia', 'Boateng', '1992-12-05', 'F', '+233271234571', 'Tema, Greater Accra', 'Kwabena Boateng', '+233271234572', 'NHIS', 'NHIS456789'),
-(9,'Kwame', 'Duah', '2001-08-20', 'M', '+233541234571', 'Spintex, Accra', 'Jane Duah', '+233541234572', 'NHIS', 'NHIS012345'),
-(10,'Abigail', 'Kufuor', '2005-02-14', 'F', '+233201234571', 'Airport Hills, Accra', 'Helena Kufuor', '+233201234572', 'Natiowide', 'N6662154789'),
-(11,'Yaw', 'Frimpong', '1993-05-08', 'M', '+233241234573', 'Madina, Accra', 'Abena Frimpong', '+233241234574', 'NHIS', 'NHIS345678'),
-(12,'Grace', 'Sarpong', '2017-10-17', 'F', '+233551234573', 'Adenta, Accra', 'Kwame Sarpong', '+233551234574', 'NHIS', 'NHIS901234'),
-(13,'Reina', 'Agyeman', '2012-07-03', 'F', '+233271234573', 'Achimota, Accra', 'Eugene Agyeman', '+233271234574', NULL, NULL),
-(14,'Janet', 'Poku', '2019-03-22', 'F', '+233541234573', 'Tesano, Accra', 'Kofi Poku', '+233541234574', 'Nationwide', 'N5552178952'),
-(15,'Jennifer', 'Baah', '1976-12-09', 'F', '+233201234573', 'Labone, Accra', 'David Baah', '+233201234574', 'NHIS', 'NHIS789012'),
-(16,'Joseph', 'Nkrumah', '2021-09-14', 'M', '+233241234575', 'Cantonment, Accra', 'Comfort Nkrumah', '+233241234576', 'NHIS', 'NHIS456789'),
-(17,'Kwame', 'Appiah', '1994-04-28', 'M', '+233551234575', 'Ridge, Accra', 'Nana Appiah', '+233551234576', 'Nationwide', 'N4443385621'),
-(18,'Paul', 'Danso', '2000-11-07', 'M', '+233271234575', 'Dansoman, Accra', 'Yaw Danso', '+233271234576', 'NHIS', 'NHIS678901'),
-(19,'Enock', 'Osei', '1989-06-19', 'M', '+233541234575', 'Dzorwulu, Accra', 'Abena Osei', '+233541234576', 'NHIS', 'NHIS234567'),
-(20,'James', 'Addo', '2001-01-25', 'M', '+233201234575', 'East legon, Accra', 'Tiffany Addo', '+233201234576', 'Nationwide', 'N3335566778'),
-(21,'Kwesi', 'Agyei', '2003-08-11', 'M', '+233241234577', 'Osu, Accra', 'James Agyei', '+233241234578', NULL, NULL),
-(22,'Abena', 'Opoku', '2022-03-30', 'F', '+233551234577', 'Airport Hills, Accra', 'Emelia Opoku', '+233551234578', 'NHIS', 'NHIS123456'),
-(23,'Peniel', 'Mensah', '1982-10-16', 'F', '+233271234577', 'Labone, Accra', 'Bernard Mensah', '+233271234578', 'NHIS', 'NHIS789012'),
-(24,'Salome', 'Owusu', '1990-05-23', 'F', '+233541234577', 'Haatso, Accra', 'Kwesi Owusu', '+233541234578', 'Nationwide', 'N1114478956'),
-(25,'Prince', 'Asamoah', '2014-12-08', 'M', '+233201234577', 'Dome, Accra', 'Anna Asamoah', '+233201234578', 'NHIS', 'NHIS901234'),
-(26,'Aikins', 'Boateng', '2007-07-27', 'M', '+233241234579', 'Kwabenya, Accra', 'Yaw Boateng', '+233241234580', 'NHIS', 'NHIS678901'),
-(27,'Yaw', 'Antwi', '1992-02-13', 'M', '+233551234579', 'Madina, Accra', 'Godwin Antwi', '+233551234580', 'Nationwide', 'N2221144569');
+INSERT INTO Patients (patient_id, first_name, last_name, date_of_birth, gender, `status`, contact_number, address, emergency_contact_name, emergency_contact_number, insurance_provider, insurance_policy_number) VALUES
+(1,'Kwabena', 'Ansah', '1985-03-15', 'M', 'inpatient', '+233241234569', 'Adabraka, Accra', 'Akua Ansah', '+233241234570', 'NHIS', 'NHIS123456'),
+(2,'Akua', 'Mensah', '2000-07-22', 'F', 'inpatient', '+233551234569', 'Asylum Down, Accra', 'Yaw Mensah', '+233551234570', 'NHIS', 'NHIS789012'),
+(3,'Joel', 'Owusu', '1978-11-30', 'M', 'outpatient', '+233271234569', 'Kaneshie, Accra', 'Godfred Owusu', '+233271234570', NULL, NULL),
+(4,'Jonathan', 'Addo', '2005-04-18', 'inpatient', 'M', '+233541234569', 'Dansoman, Accra', 'Cosmos Addo', '+233541234570', 'Nationwide', 'N8886245136'),
+(5,'Joy', 'Amoah', '2003-09-25', 'F', 'inpatient', '+233201234569', 'East Legon, Accra', 'Jeremy Amoah', '+233201234570', 'NHIS', 'NHIS567890'),
+(6,'Akua', 'Tetteh', '1970-01-12', 'F', 'inpatient', '+233241234571', 'Labadi, Accra', 'Kojo Tetteh', '+233241234572', NULL, NULL),
+(7,'Kofi', 'Asante', '2000-06-28', 'M', 'outpatient', '+233551234571', 'Osu, Accra', 'John Asante', '+233551234572', 'Nationwide', 'N7776214589'),
+(8,'Emelia', 'Boateng', '1992-12-05', 'F', 'discharged', '+233271234571', 'Tema, Greater Accra', 'Kwabena Boateng', '+233271234572', 'NHIS', 'NHIS456789'),
+(9,'Kwame', 'Duah', '2001-08-20', 'M', 'inpatient', '+233541234571', 'Spintex, Accra', 'Jane Duah', '+233541234572', 'NHIS', 'NHIS012345'),
+(10,'Abigail', 'Kufuor', '2005-02-14', 'F', 'inpatient', '+233201234571', 'Airport Hills, Accra', 'Helena Kufuor', '+233201234572', 'Natiowide', 'N6662154789'),
+(11,'Yaw', 'Frimpong', '1993-05-08', 'M', 'outpatient', '+233241234573', 'Madina, Accra', 'Abena Frimpong', '+233241234574', 'NHIS', 'NHIS345678'),
+(12,'Grace', 'Sarpong', '2017-10-17', 'F', 'discharged', '+233551234573', 'Adenta, Accra', 'Kwame Sarpong', '+233551234574', 'NHIS', 'NHIS901234'),
+(13,'Reina', 'Agyeman', '2012-07-03', 'F', 'outpatient', '+233271234573', 'Achimota, Accra', 'Eugene Agyeman', '+233271234574', NULL, NULL),
+(14,'Janet', 'Poku', '2019-03-22', 'F', 'outpatient', '+233541234573', 'Tesano, Accra', 'Kofi Poku', '+233541234574', 'Nationwide', 'N5552178952'),
+(15,'Jennifer', 'Baah', '1976-12-09', 'F', 'inpatient', '+233201234573', 'Labone, Accra', 'David Baah', '+233201234574', 'NHIS', 'NHIS789012'),
+(16,'Joseph', 'Nkrumah', '2021-09-14', 'M', 'discharged', '+233241234575', 'Cantonment, Accra', 'Comfort Nkrumah', '+233241234576', 'NHIS', 'NHIS456789'),
+(17,'Kwame', 'Appiah', '1994-04-28', 'M', 'inpatient', '+233551234575', 'Ridge, Accra', 'Nana Appiah', '+233551234576', 'Nationwide', 'N4443385621'),
+(18,'Paul', 'Danso', '2000-11-07', 'M', 'outpatient', '+233271234575', 'Dansoman, Accra', 'Yaw Danso', '+233271234576', 'NHIS', 'NHIS678901'),
+(19,'Enock', 'Osei', '1989-06-19', 'M', 'inpatient', '+233541234575', 'Dzorwulu, Accra', 'Abena Osei', '+233541234576', 'NHIS', 'NHIS234567'),
+(20,'James', 'Addo', '2001-01-25', 'M', 'discharged', '+233201234575', 'East legon, Accra', 'Tiffany Addo', '+233201234576', 'Nationwide', 'N3335566778'),
+(21,'Kwesi', 'Agyei', '2003-08-11', 'M', 'inpatient', '+233241234577', 'Osu, Accra', 'James Agyei', '+233241234578', NULL, NULL),
+(22,'Abena', 'Opoku', '2022-03-30', 'F', 'outpatient', '+233551234577', 'Airport Hills, Accra', 'Emelia Opoku', '+233551234578', 'NHIS', 'NHIS123456'),
+(23,'Peniel', 'Mensah', '1982-10-16', 'F', 'inpatient', '+233271234577', 'Labone, Accra', 'Bernard Mensah', '+233271234578', 'NHIS', 'NHIS789012'),
+(24,'Salome', 'Owusu', '1990-05-23', 'F', 'inpatient', '+233541234577', 'Haatso, Accra', 'Kwesi Owusu', '+233541234578', 'Nationwide', 'N1114478956'),
+(25,'Prince', 'Asamoah', '2014-12-08', 'M', 'discharged', '+233201234577', 'Dome, Accra', 'Anna Asamoah', '+233201234578', 'NHIS', 'NHIS901234'),
+(26,'Aikins', 'Boateng', '2007-07-27', 'M', 'discharged', '+233241234579', 'Kwabenya, Accra', 'Yaw Boateng', '+233241234580', 'NHIS', 'NHIS678901'),
+(27,'Yaw', 'Antwi', '1992-02-13', 'M', 'discharged', '+233551234579', 'Madina, Accra', 'Godwin Antwi', '+233551234580', 'Nationwide', 'N2221144569');
 SELECT * FROM Patients;
 
 

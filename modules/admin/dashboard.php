@@ -20,12 +20,7 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="dashboard-header">
-            <h4 class="mb-0">Dashboard</h4>
-            <div class="search-box">
-                <input type="text" class="form-control" placeholder="Search...">
-            </div>
-        </div>
+        <?php include "../../templates/header.php" ?>
 
         <!-- Stats Row -->
         <div class="row">
