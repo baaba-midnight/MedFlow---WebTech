@@ -1,0 +1,106 @@
+.selected-actions {
+    display: flex;
+    gap: .625rem;
+    justify-content: center;
+}
+
+.status {
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+.inpatient {
+    background-color: rgba(89, 161, 79, 0.3);
+    color: rgba(89, 161, 79);
+    border: 2px solid rgba(89, 161, 79);
+}
+
+.outpatient {
+    background-color: rgba(215, 28, 30, 0.3);
+    color: rgba(215, 28, 30, 0.8);
+    border: 2px solid rgba(215, 28, 30, 0.8);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: .3125rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 24px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.action-btn.edit-btn {
+    background-color: #1A1A6C;
+    color: white;
+}
+
+.action-btn.open-btn {
+    background-color: #1a1f2c;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-0.0625rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.875rem;
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+}
+
+.table th, .table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+    background-color: #f7fafb;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center; 
+    font-size: 15px;
+}
+
+.table td {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f9faf9;
+}
+
+.table tbody tr.selected {
+    background-color: #ecfdf5;
+}

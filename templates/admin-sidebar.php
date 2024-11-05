@@ -8,8 +8,7 @@
     <nav class="nav flex-column mt-4">
         <a class="nav-link" href="dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
         <a class="nav-link" href="manage_patients.php"><i class="fas fa-user-injured me-2"></i> Patient Management</a>
-        <a class="nav-link" href="#"><i class="fas fa-user me-2"></i> User Management</a>
-        <a class="nav-link" href="#"><i class="fas fa-file-invoice-dollar me-2"></i> Billing</a>
+        <a class="nav-link" href="manage_users.php"><i class="fas fa-user me-2"></i> User Management</a>
     </nav>
 
     <div class="user-profile">

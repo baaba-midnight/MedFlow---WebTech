@@ -20,3 +20,5 @@ window.addEventListener("click", (event) => {
         modal.style.display = "none";
     }
 });
+
+// Store data for each section
