@@ -10,32 +10,7 @@
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="logo-section">
-            <img src="path-to-logo.png" alt="MedFlow">
-        </div>
-        
-        <nav class="nav flex-column mt-4">
-            <a class="nav-link active" href="#"><i class="fas fa-home me-2"></i> Dashboard</a>
-            <a class="nav-link" href="#"><i class="fas fa-user-injured me-2"></i> My Patients</a>
-            <a class="nav-link" href="#"><i class="fas fa-calendar-alt me-2"></i> Appointments</a>
-            <a class="nav-link" href="#"><i class="fas fa-notes-medical me-2"></i> Medical Records</a>
-            <a class="nav-link" href="#"><i class="fas fa-prescription me-2"></i> Prescriptions</a>
-            <a class="nav-link" href="#"><i class="fas fa-comments me-2"></i> Messages</a>
-        </nav>
-
-        <div class="user-profile">
-            <div class="d-flex align-items-center">
-                <img src="../../assets/images/man-1.jpg" alt="Profile" class="me-3">
-                <div>
-                    <h6 class="mb-1">Dr. Michael Jerome</h6>
-                    <small>Cardiologist</small>
-                    <div class="small mt-1">michael.jerome@medflow.com</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "./templates/sidebar.php"; ?>
 
     <!-- Main Content -->
     <div class="main-content">
