@@ -1,5 +1,5 @@
 .btn-custom {
-    background-color: rgb(15, 3, 61); /* Custom blue background */
+    background-color: rgb(23, 23, 125) !important; /* Custom blue background */
     color: #fff; /* White text */
     /* border: 2px solid #1e90ff; */
 }
