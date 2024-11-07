@@ -6,8 +6,8 @@
     </div>
     
     <nav class="nav flex-column mt-4">
-        <a class="nav-link active" href="../../modules/doctor/dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
-        <a class="nav-link" href="../../modules/doctor/patient_records.php"><i class="fas fa-user-injured me-2"></i> Patient Management</a>
+        <a class="nav-link" href="dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
+        <a class="nav-link" href="patient_records.php"><i class="fas fa-user-injured me-2"></i> Patient Management</a>
         <!-- <a class="nav-link" href="#"><i class="fas fa-file-invoice-dollar me-2"></i> Billing</a> -->
     </nav>
 
@@ -22,3 +22,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Get the current page url
+    const currentPage = window.location.pathname.split("/").pop();
+    console.log(currentPage);
+
+    // Get all sidebar links
+    const sidebarLinks = document.querySelectorAll(".nav-link");
+
+
+    // add the active class to the current page link
+    sidebarLinks.forEach(link => {
+        console.log(link.getAttribute('href'))
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    })
+</script>
