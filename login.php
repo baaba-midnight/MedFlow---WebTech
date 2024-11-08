@@ -1,3 +1,6 @@
+<?php
+include './includes/config.php';
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +29,7 @@
             </div>
             
             <div class="mt-5 ms-md-5 ms-lg-5 ms-sm-3" style="width: 80%;">
-                <form action="#">                    
+                <form method="POST" action="login.php">                    
                         <label for="email" class="form-label"><b>Username</b></label>
                         <input type="email" id="email" placeholder="Enter your username" class="custom" required>
                         <span class="error" id = "error-email"></span>
