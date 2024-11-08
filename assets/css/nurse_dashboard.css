@@ -1,0 +1,467 @@
+:root {
+    --sidebar-width: 260px;
+    --primary-blue: #12137c;
+    --card-border-radius: 10px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    padding: 20px;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo-section img {
+    height: 40px;
+}
+
+.nav-link {
+    color: #666;
+    padding: 15px 20px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.user-profile {
+    position: relative;
+    color: white;
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--primary-blue);
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    top: 30%;
+}
+
+.profile-image {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+}
+
+.profile-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-details h6 {
+    margin: 60px 0 5px;
+    font-size: 1.5em;
+}
+
+.profile-details p {
+    margin: 5px 0;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.profile-details a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-details a:hover {
+    text-decoration: underline;
+}
+
+
+/* Main Content Styles */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    
+}
+
+
+/*check later
+.main-content .cards, .appointments-section {
+    max-width: 600px; /* Adjust to desired width */
+    /*margin: 0 auto; /* Center align within the main content */
+/*}*/
+
+
+.dashboard-header {
+    background-color: white;
+    padding: 15px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-title {
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.search-box {
+    max-width: 250px; /* Adjust width as needed */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.icon-blue {
+    color: var(--primary-blue); /* Set the navy blue color for icons */
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+.date-text {
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+.stat-card {
+    /*width: 100%;*/
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.stat-card.primary {
+    background-color: var(--primary-blue);
+}
+
+.stat-card.dark {
+    background-color: #1a1a1a;
+}
+
+.stat-card.teal {
+    background-color: #2c5282;
+}
+
+.stat-card h2 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+}
+
+.stat-card small {
+    opacity: 0.8;
+}
+
+.chart-card {
+    background-color: white;
+    border-radius: var(--card-border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    max-width: 300px;
+    width: 100%;
+}
+
+.bed-occupancy {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 15px;
+}
+
+.see-details {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.see-details:hover {
+    background-color: #f8f9fa;
+}
+
+
+/* Styles added to dashboard.css to help with the patient management */
+
+.table th {
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+}
+
+.table th i {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    color: #999;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.btn-dark {
+    background-color: var(--primary-blue);
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #0d0e5c;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.table thead th {
+    border-bottom: 2px solid #eee;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.dashboard-header .input-group {
+    max-width: 300px;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.appointments-section {
+    /*max-width: 600px; /* Align width with the cards section */
+    margin-top: 20px;
+}
+
+.chart-card h5 {
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+}
+
+.icon-blue {
+    color: var(--primary-blue); /* Set icon color */
+}
+
+.appointment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa; /* Light gray background for card */
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.appointment-details p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.appointment-card button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+}
+
+.btn-outline {
+    color: #007bff;
+    border-color: #007bff;
+    border:none;
+}
+
+
+
+.appointment-card button:hover {
+    background-color: #e9ecef; /* Slight hover effect */
+}
+
+
+
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row > .col-md-8 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-right: 20px;
+}
+
+.row > .table-container {
+    flex: 0 0 45%;
+    max-width: 45%;
+    background: white;
+    border-radius: 12px;
+    padding: 1.875rem;
+    overflow-x: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*table container*/
+.selected-actions {
+    display: flex;
+    gap: .625rem;
+    justify-content: center;
+}
+
+.status {
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+.inpatient {
+    background-color: rgba(89, 161, 79, 0.3);
+    color: rgba(89, 161, 79);
+    border: 2px solid rgba(89, 161, 79);
+}
+
+.outpatient {
+    background-color: rgba(215, 28, 30, 0.3);
+    color: rgba(215, 28, 30, 0.8);
+    border: 2px solid rgba(215, 28, 30, 0.8);
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    gap: .3125rem;
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 24px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.action-btn.edit-btn {
+    background-color: #1A1A6C;
+    color: white;
+}
+
+.action-btn.open-btn {
+    background-color: #1a1f2c;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-0.0625rem);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    padding: 1.875rem;
+    overflow-x: auto;
+    
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+}
+
+.table th, .table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table th {
+    background-color: #f7fafb;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center; 
+    font-size: 15px;
+}
+
+.table td {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.table th:first-child {
+    border-radius: 12px 0 0 0;
+}
+
+.table th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f9faf9;
+}
+
+.table tbody tr.selected {
+    background-color: #ecfdf5;
+}
