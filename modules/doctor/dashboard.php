@@ -36,7 +36,7 @@
                                     <h2>24</h2>
                                     <small>+20 more patients than last month</small>
                                 </div>
-                                <a href="#" class="see-details">See Details</a>
+                                <button class="see-details align-self-start" id="active-patients">See Details</button>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                     <h2>5</h2>
                                     <small>18th October 2024</small>
                                 </div>
-                                <a href="#" class="see-details">See Details</a>
+                                <button class="see-details align-self-start" id="active-patients">See Details</button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                     <h2>3</h2>
                                     <small>+20 more patients than last month</small>
                                 </div>
-                                <a href="#" class="see-details">See Details</a>
+                                <button class="see-details align-self-start" id="active-patients">See Details</button>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                                     <h2>8</h2>
                                     <small>+20 more patients than last month</small>
                                 </div>
-                                <a href="#" class="see-details">See Details</a>
+                                <button class="see-details align-self-start" id="active-patients">See Details</button>
                             </div>
                         </div>
                     </div>
