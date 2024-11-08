@@ -2,6 +2,14 @@ DROP DATABASE IF EXISTS hospital_management;
 CREATE DATABASE hospital_management;
 USE hospital_management;
 
+CREATE TABLE Users (
+    user_id INT(11)  AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    userpass VARCHAR(255) NOT NULL,
+    userrole ENUM('nurse', 'doctor', 'admin') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE Patients (
     patient_id INT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
