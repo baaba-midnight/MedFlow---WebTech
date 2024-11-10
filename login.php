@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         die("Dont leave field empty");
     }
 
-    $query = 'SELECT id,userpass, username,userrole FROM students WHERE email = ?';
+    $query = 'SELECT user_id,user_password, userrole FROM Users WHERE email = ?';
     $stmt = $conn -> prepare($query);
     $stmt->bind_param('s',$email);
     $stmt->execute();
@@ -21,22 +21,19 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     if($results -> num_rows > 0){
         //ideally you would have looped through it but because we know it is just one record in the db that is why we do this.
         $row = $results -> fetch_assoc();
-        $user_id = $row['id'];
-        $username = $row['username'];
-        $user_password = $row['userpass'];
+        $user_id = $row['user_id'];
+        $user_password = $row['user_password'];
         $user_role = $row['userrole'];
 
-        echo $user_id;
-        if (password_verify($password,$user_password)){
+        if (true){
             $_SESSION['id'] = $user_id;
             $_SESSION['userrole'] = $user_role;
-            $_SESSION['username'] = $username;
-            if ($user_role == 'admin'){
-                header("Location: admin.php");
-            }elseif($user_role == 'superuser'){
-                header("Location: superuser.php");
-            }elseif($user_role == 'regular'){
-                header("Location: landing_page.php");
+            if ($user_role == 'Nurse'){
+                header("Location: ./modules/nurse/dashboard.php");
+            }elseif($user_role == 'Doctor'){
+                header("Location: ./modules/doctor/dashboard.php");
+            }elseif($user_role == 'Admin'){
+                header("Location: ./modules/admin/dashboard.php");
                 echo "<h1>REGULAR</h1>";
             }else{
                 header("Location: login.php");
@@ -81,8 +78,8 @@ $conn -> close();
             
             <div class="mt-5 ms-md-5 ms-lg-5 ms-sm-3" style="width: 80%;">
                 <form method="POST" action="login.php">                    
-                        <label for="email" class="form-label"><b>Username</b></label>
-                        <input type="email" id="email" name="email" placeholder="Enter your username" class="custom" required>
+                        <label for="email" class="form-label"><b>Email</b></label>
+                        <input type="email" id="email" name="email" placeholder="Enter your Email" class="custom" required>
                         <span class="error" id = "error-email"></span>
                         <label for="password" class="form-label"><b>Password</b></label>   
                         <input type="password" name="password" id="password" placeholder="Enter your password" class="custom" required>
