@@ -59,6 +59,7 @@ $conn -> close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="main-box">
@@ -77,13 +78,14 @@ $conn -> close();
             </div>
             
             <div class="mt-5 ms-md-5 ms-lg-5 ms-sm-3" style="width: 80%;">
-                <form method="POST" action="login.php">                    
+                <div id="alert-container"></div>
+                <form id="myForm" method="POST" action="login.php">                    
                         <label for="email" class="form-label"><b>Email</b></label>
                         <input type="email" id="email" name="email" placeholder="Enter your Email" class="custom" required>
-                        <span class="error" id = "error-email"></span>
+                        <span ></span>
                         <label for="password" class="form-label"><b>Password</b></label>   
                         <input type="password" name="password" id="password" placeholder="Enter your password" class="custom" required>
-                        <span class="error" id="error-password"></span>
+                        <span ></span>
                         <button class="btn mt-4">Login</button>
                 </form> 
             </div>
@@ -92,5 +94,6 @@ $conn -> close();
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 </html>
