@@ -13,7 +13,7 @@ CREATE TABLE Users (
     address TEXT NOT NULL,
     userrole ENUM('Nurse', 'Doctor') NOT NULL,
     user_department ENUM('Emergency department','Outpatient Department','Internal Medicine','Surgery Department','Pediatrics','Obstetrics and Gynecology','Pharmacy','Diagnostic Services'),
-    license_number varchar(50) NOT NULL,
+    license_number varchar(50) NOT NULL UNIQUE,
     username varchar(50) NOT NULL UNIQUE,
     user_password VARCHAR(50) NOT NULL,
     emergency_contact_name varchar(50) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE MedicalHistory (
     diagnosis_date DATE NOT NULL,
     case_condition ENUM('active', 'resolved') NOT NULL,
     notes TEXT,
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Allergies (
@@ -53,7 +53,7 @@ CREATE TABLE Allergies (
     allergy_type VARCHAR(100) NOT NULL,
     severity ENUM('mild', 'moderate', 'severe') NOT NULL,
     notes TEXT,
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Departments (
@@ -68,8 +68,8 @@ CREATE TABLE Doctors (
     user_id INT NOT NULL, 
     specialization VARCHAR(100) NOT NULL,
     department_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id) ON DELETE CASCADE
 );
 
 
@@ -78,8 +78,8 @@ CREATE TABLE DoctorDepartment (
     doctor_id INT NOT NULL,
     is_head_doctor BOOLEAN DEFAULT FALSE,
     PRIMARY KEY (department_id, doctor_id),
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id),
-    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Medications (
@@ -92,8 +92,8 @@ CREATE TABLE Medications (
     end_date DATE,
     prescribed_by INT NOT NULL,
     medi_condition ENUM('active', 'discontinued') DEFAULT 'active',
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (prescribed_by) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (prescribed_by) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Appointments (
@@ -106,8 +106,8 @@ CREATE TABLE Appointments (
     appointment_type VARCHAR(50) NOT NULL,
     notes TEXT,
     room_number VARCHAR(10),
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (doctor_user_id) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_user_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 
@@ -116,8 +116,8 @@ CREATE TABLE Staff (
     user_id INT NOT NULL, 
     task TEXT NOT NULL,
     department_id INT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id) ON DELETE CASCADE
 );
 
 
@@ -130,8 +130,8 @@ CREATE TABLE Vitals (
     temperature DECIMAL(3,1),
     respiratory_rate INT,
     recorded_by INT NOT NULL,
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (recorded_by) REFERENCES Users(user_id)
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (recorded_by) REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
 
@@ -144,8 +144,8 @@ CREATE TABLE LabResults (
     normal_range VARCHAR(100),
     performed_by INT NOT NULL,
     notes TEXT,
-    FOREIGN KEY(performed_by) REFERENCES Staff(staff_id),
-    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
+    FOREIGN KEY(performed_by) REFERENCES Staff(staff_id) ON DELETE CASCADE,
+    FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
 INSERT INTO Users (first_name, last_name, date_of_birth, gender, email, phone_number, address, userrole, user_department, license_number, username, user_password, emergency_contact_name, emergency_contact_phone) VALUES
@@ -321,6 +321,8 @@ INSERT INTO LabResults (patient_id, test_type, test_date, result, normal_range, 
 (27, 'Lipid Panel', '2024-01-18', 'Total Chol: 185, LDL: 110, HDL: 45', 'Total Chol: <200, LDL: <130, HDL: >40', 4, 'Within normal limits');
 SELECT * FROM LabResults;
 
+DELETE FROM Patients WHERE patient_id = 1;
+SELECT * FROM Patients;
 #QUERIES 
 #Query to provide the patient information when the first and last name is entered 
 SELECT * 
