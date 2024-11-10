@@ -13,7 +13,7 @@ CREATE TABLE Users (
     address TEXT NOT NULL,
     userrole ENUM('Nurse', 'Doctor') NOT NULL,
     user_department ENUM('Emergency department','Outpatient Department','Internal Medicine','Surgery Department','Pediatrics','Obstetrics and Gynecology','Pharmacy','Diagnostic Services'),
-    license_number varchar(50) NOT NULL,
+    license_number varchar(50) NOT NULL UNIQUE,
     username varchar(50) NOT NULL UNIQUE,
     user_password VARCHAR(50) NOT NULL,
     emergency_contact_name varchar(50) NOT NULL,
