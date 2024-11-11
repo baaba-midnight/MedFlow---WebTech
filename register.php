@@ -37,13 +37,13 @@
                 <h6>Personal Information</h6>
                 <form>
                     <label>First Name *</label>
-                    <input type="text" placeholder="Enter first name" required>
+                    <input type="text" placeholder="Enter first name" name = "fname" required>
 
                     <label>Last Name *</label>
-                    <input type="text" placeholder="Enter last name" required>
+                    <input type="text" placeholder="Enter last name" name = "lname" required>
 
                     <label>Date of Birth *</label>
-                    <input type="date" placeholder="mm/dd/yyyy" required>
+                    <input type="date" placeholder="mm/dd/yyyy" name="dob" required>
 
                     <label>Gender *</label>
                     <select name="gender-options" id="gender-options" class="form-select">
@@ -59,13 +59,13 @@
                 <h6>Contact Information</h6>
                 <form>
                     <label>Email Address *</label>
-                    <input type="text" placeholder="Enter email address" required>
+                    <input type="text" placeholder="Enter email address" name = "email" required>
 
                     <label>Phone Number *</label>
-                    <input type="text" placeholder="Enter phone number" required>
+                    <input type="text" placeholder="Enter phone number" name = "phone" required>
 
                     <label>Address *</label>
-                    <textarea placeholder="Enter your address"></textarea>
+                    <textarea placeholder="Enter your address" name = "address"></textarea>
 
                     <label>Role *</label>
                     <select name="role-options" id="role-options" class="form-select">
@@ -88,7 +88,7 @@
                     </select>
 
                     <label>License Number *</label>
-                    <input type="text" placeholder="Enter professional license number" required>
+                    <input type="text" name = "license_number" placeholder="Enter professional license number" required>
                 </form>
             </div>
 
@@ -100,10 +100,10 @@
                     <input placeholder="Enter Username" type="text" required>
 
                     <label>Password *</label>
-                    <input placeholder="Enter password" type="password" required>
+                    <input placeholder="Enter password" type="password" name = "password" required>
 
                     <label>Confirm Password *</label>
-                    <input placeholder="Confirm Password" type="password" required>    
+                    <input placeholder="Confirm Password" type="password" name = "password2" required>    
                 </form>
             </div>
 
@@ -112,10 +112,10 @@
                 <h6>Emergency Contact</h6>
                 <form>
                     <label>Emergency Contact Name *</label>
-                    <input placeholder="Enter emergency contact name" type="text" required>
+                    <input placeholder="Enter emergency contact name" name = "emergency_name" type="text" required>
 
                     <label>Emergency Contact Phone</label> 
-                    <input placeholder="Enter emergency contact name">
+                    <input placeholder="Enter emergency contact name" name = "emergency_phone">
                 </form>
             </div>
             
