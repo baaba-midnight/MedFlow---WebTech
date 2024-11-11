@@ -229,3 +229,9 @@ body {
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
 }
+
+.add-patient {
+    background-color: #0d0e5c;
+    margin-top: 50px;
+    color: white;
+}

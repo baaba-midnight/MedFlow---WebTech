@@ -1,3 +1,10 @@
+<?php
+include "../../functions/getPatientsFromDatabase.inc.php";
+
+// Assuming you're fetching patient records from your database
+$patients = getPatientsFromDatabase();  // Fetch patients from your database
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,20 +46,19 @@
                 </thead>
                 
                 <tbody>
-                    <!-- Row 1 -->
-                    <tr>
-                        <td>1</td>
-                        <td>Baaba Amosah</td>
-                        <td>0</td>
-                        <td>30-09-2004</td>
-                        <td>Pediatrics</td>
-                        <td>Frustration</td>
-                        <td>
-                            <div class="status outpatient">Outpatient</div>
-                        </td>
-                        <td>
+                    <?php
+                    foreach ($patients as $patient) {
+                      echo '<tr data-id= ' . $patient['id'] .'>';
+                      echo '<td>' . $patient['id'] . '</td>';
+                      echo '<td>' . $patient['name'] . '</td>';
+                      echo '<td>' . $patient['age'] . '</td>';
+                      echo '<td>' . $patient['admission_date'] . '</td>';
+                      echo '<td>' . $patient['department'] . '</td>';
+                      echo '<td>' . $patient['diagnosis'] . '</td>';
+                      echo '<td class="status"><div class="status ' . trim($patient['status']) . '">' . $patient['status'] . '</div></td>';
+                      echo '<td>
                             <div class="selected-actions" id="selectedActions">
-                                <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="">
+                                <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
                                     <span class="action-icon">✏️</span> Edit
                                 </button>
                                 <button class="action-btn remove-btn">
@@ -63,39 +69,20 @@
                                 </button>
                                 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
                             </div>
-                        </td> 
-                    </tr>
-                    
-                    <!-- Row 2 -->
-                    <tr>
-                        <td>2</td>
-                        <td>Baaba Amosah</td>
-                        <td>0</td>
-                        <td>30-09-2004</td>
-                        <td>Pediatrics</td>
-                        <td>Frustration</td>
-                        <td>
-                            <div class="status inpatient">Inpatient</div>
-                        </td>
-                        <td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button class="action-btn edit-btn" onclick="" data-bs-toggle="modal" data-bs-target="#myModal>
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                            </div>
-                        </td> 
-                    </tr>
+                        </td>';
+                      echo '</tr>';
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
+
+        <!-- Add New User -->
+        <button type="button" class="action-btn add-patient" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
+          <span class="action-icon"></span> Add Patient
+        </button>
     </div>
-     <!-- The Modal -->
+     <!-- Patient Form Modal -->
      <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
           <div class="modal-content">
@@ -106,7 +93,7 @@
                     <img src="../../assets/images/medflow-logo.png" widtth="200" height="100" alt="MedFlow-logo">
                 </div>
                 
-                <h4 class="modal-title mt-3 mb-2"><b>Edit Patient Information</b></h4>
+                <h4 class="modal-title mt-3 mb-2" id="modalTitle"><b>Edit Patient Information</b></h4>
                 <form>
                     <div class="row mt-4">
                       <div class="col">
@@ -114,11 +101,11 @@
                         <input type="text" id="fname" class="form-control" placeholder="Enter first name" name="fname">
                       </div>
                       <div class="col">
-                        <label for="mname" class="form-label"><b>Last Name*</b></label>
+                        <label for="mname" class="form-label"><b>Middle Name*</b></label>
                         <input type="text" id="mname" class="form-control" placeholder="Enter middle name" name="mname">
                       </div>
                       <div class="col">
-                        <label for="lname" class="form-label"><b>Username*</b></label>
+                        <label for="lname" class="form-label"><b>Last Name*</b></label>
                         <input type="text" id="lname" class="form-control" placeholder="Enter last name" name="lname">
                       </div>
                     </div>
@@ -126,39 +113,29 @@
                     <div class="row mt-4">
                         <div class="col">
                           <label for="dob" class="form-label"><b>Date of Birth*</b></label>
-                          <input type="date" id="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob">
+                          <input type="date" id="dob" name="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob">
                         </div>
                         <div class="col">
-                          <label for="mname" class="form-label"><b>Sex*</b></label>
-                          <select class="form-select">
-                            <option>Male</option>
-                            <option>Female</option>
+                          <label for="sex" class="form-label"><b>Sex*</b></label>
+                          <select id="sex" name="sex" class="form-select">
+                            <option value="" disabled selected hidden>Select Gender</option>
+                            <option value="male" <?php echo ($sex == 'male') ? 'selected' : ''; ?>>Male</option>
+                            <option value="female" <?php echo ($sex == 'female') ? 'selected' : ''; ?>>Female</option>
                           </select>
                         </div>
                         <div class="col">
-                          <label for="lname" class="form-label"><b>Marital Status*</b></label>
-                          <select class="form-select">
-                            <option>Single</option>
-                            <option>Married</option>
-                            <option>Widowed</option>
-                            <option>Divorced</option>
-                            <option>Separated</option>
-                            <option>Registered Partnership</option>
+                          <label for="martial_status" class="form-label"><b>Marital Status*</b></label>
+                          <select id="marital_status" name="marital_status" class="form-select">
+                          <option value="" disabled selected hidden>Select Marital Status</option>
+                            <option value="single" <?php echo ($marital_status == 'single') ? 'selected' : ''; ?>>Single</option>
+                            <option value="married" <?php echo ($marital_status == 'married') ? 'selected' : ''; ?>>Married</option>
+                            <option value="divorced" <?php echo ($marital_status == 'divorced') ? 'selected' : ''; ?>>Divorced</option>
+                            <option value="widowed" <?php echo ($marital_status == 'widowed') ? 'selected' : ''; ?>>Widowed</option>
                           </select>
                         </div>
                       </div>
 
                       <div class="row mt-4">
-                        <div class="col">
-                          <label for="bgroup" class="form-label"><b>Blood Group*</b></label>
-                          <select class="form-select">
-                            <option value="" disabled selected hidden>Select Blood Type</option>
-                            <option>O</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>AB</option>
-                          </select>
-                        </div>
                         <div class="col">
                           <label for="email" class="form-label"><b>Email*</b></label>
                           <input type="email" id="email" class="form-control" placeholder="Enter email address" name="email">
@@ -170,30 +147,34 @@
                     </div>
 
                     <label for="address" class="form-label mt-4"><b>Address*</b></label>
-                    <textarea class="form-control" id="address" rows="5" maxlength="500" placeholder="Enter your address"></textarea>
+                    <textarea class="form-control" id="address" name="address" rows="5" maxlength="500" placeholder="Enter your address"></textarea>
 
                     <label for="medications" class="form-label mt-4"><b>Current Medications*</b></label>
-                    <textarea class="form-control" id="medications" rows="5" maxlength="500" placeholder="List your medications"></textarea>
+                    <textarea class="form-control" id="medications" name="medications" rows="5" maxlength="500" placeholder="List your medications"></textarea>
 
                     <div class="row mt-4">
                         <div class="col">
                             <label for="insuranceProvider" class="form-label"><b>Insurance Provider</b></label>
-                            <input type="text" id="insuranceProvider" class="form-control" placeholder="Insurance Company Name" name="insuranceProvider">
+                            <input type="text" id="insuranceProvider" name="insuranceProvider" class="form-control" placeholder="Insurance Company Name" name="insuranceProvider">
                         </div>
 
                         <div class="col">
                             <label for="policyNumber" class="form-label"><b>Policy Number*</b></label>
-                            <input type="tel" id="policyNumber" class="form-control" placeholder="Insurance Policy Number" name="policyNumber">
+                            <input type="tel" id="policyNumber" name="policyNumber" class="form-control" placeholder="Insurance Policy Number" name="policyNumber">
                         </div>
                         <div class="col">
-                            <label for="bgroup" class="form-label"><b>Type of Insurance</b></label>
-                            <select class="form-select">
-                                <option value="" disabled selected hidden>Insurance Type</option>
-                                <option>O</option>
-                                <option>A</option>
-                                <option>B</option>
-                                <option>AB</option>
-                            </select>
+                          <label for="blood_group" class="form-label"><b>Blood Group*</b></label>
+                          <select id="blood_group" name="blood_group" class="form-select">
+                            <option value="" disabled selected hidden>Select Blood Type</option>
+                            <option value="A+" <?php echo ($blood_group == 'A+') ? 'selected' : ''; ?>>A+</option>
+                            <option value="A-" <?php echo ($blood_group == 'A-') ? 'selected' : ''; ?>>A-</option>
+                            <option value="B+" <?php echo ($blood_group == 'B+') ? 'selected' : ''; ?>>B+</option>
+                            <option value="B-" <?php echo ($blood_group == 'B-') ? 'selected' : ''; ?>>B-</option>
+                            <option value="AB+" <?php echo ($blood_group == 'AB+') ? 'selected' : ''; ?>>AB+</option>
+                            <option value="AB-" <?php echo ($blood_group == 'AB-') ? 'selected' : ''; ?>>AB-</option>
+                            <option value="O+" <?php echo ($blood_group == 'O+') ? 'selected' : ''; ?>>O+</option>
+                            <option value="O-" <?php echo ($blood_group == 'O-') ? 'selected' : ''; ?>>O-</option>
+                          </select>
                         </div>    
                     </div>
 
@@ -203,13 +184,15 @@
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-custom">Save Changes</button>
+              <button type="button" class="btn btn-outline-dark cancelBtn" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-custom" id="submitBtn">Save Changes</button>
             </div>
       
           </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/edit-patient.js"></script>
 </body>
 </html>
