@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const row = e.target.closest('tr');
 
             if (row) {
+                console.log("Row found:", row);
+
                 const patientId = row.getAttribute("data-id");
+                console.log("Patient ID:", patientId);
 
                 if (!patientId) {
                     console.error('No patient ID found');
@@ -13,25 +16,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                     console.log(`Your id is ${patientId}`);
                     
+                    // Fetch patient data by patient ID from the server
                     fetch(`../../functions/fetch_patient.inc.php?id=${encodeURIComponent(patientId)}`)
-                        .then(response => {
-                            console.log("Response status:", response.status);
-                            if (response.ok) {
-                                return response.json();
-                            }
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        })
-                        .then(data => {
-                            console.log("Data received:", data);
-                            if (!data) {
-                                throw new Error('No data received');
-                            }
-                            openPatientModal('edit', data);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching patient data:', error);
-                            alert('Failed to load patient data. Please try again.');
-                        });
+                    .then(response => {
+                        console.log("Response status:", response.status); // Log the response status (e.g., 200 for success)
+                        
+                        // Check if the response is OK (status code 200-299)
+                        if (response.ok) {
+                            return response.json(); // Parse and return the JSON data
+                        }
+                        
+                        // If response is not OK, throw an error with the status
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    })
+                    .then(data => {
+                        console.log("Data received:", data); // Log the received data
+                        
+                        // Check if data is valid
+                        if (!data) {
+                            throw new Error('No data received'); // Throw an error if data is empty
+                        }
+                        
+                        // Open the patient modal with the received data in 'edit' mode
+                        openPatientModal('edit', data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching patient data:', error); // Log the error
+                        alert('Failed to load patient data. Please try again.'); // Show an alert if there's an error
+                    });
+
                 }
             }
         } else {

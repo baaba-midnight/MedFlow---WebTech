@@ -41,6 +41,13 @@ body {
     border-radius: 10px 0 0 10px;
 }
 
+.logo-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .logo {
     width: 120px; /* Increased from 50px */
     height: auto; /* Changed to auto for proper aspect ratio */
@@ -72,7 +79,7 @@ body {
     margin: 0; /* Center the form content */
 }
 
-form {
+.form-box {
     width: 100%;
     display: flex;
     flex-direction: column;

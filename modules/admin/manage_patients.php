@@ -1,10 +1,3 @@
-<?php
-include "../../functions/getPatientsFromDatabase.inc.php";
-
-// Assuming you're fetching patient records from your database
-$patients = getPatientsFromDatabase();  // Fetch patients from your database
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +20,7 @@ $patients = getPatientsFromDatabase();  // Fetch patients from your database
     <div class="main-content">
         <?php 
             $headerTitle = 'Manage Patients';
+            $buttonContent = 'Add Patient';
             include '../../templates/header.php'; 
         ?>
 
@@ -37,42 +31,16 @@ $patients = getPatientsFromDatabase();  // Fetch patients from your database
                         <th>Patient ID</th>
                         <th>Patient Name</th>
                         <th>Age</th>
+                        <th>Gender</th>
                         <th>Admission Date</th>
-                        <th>Department</th>
-                        <th>Primary Diagnosis</th>
                         <th>Status</th>
+                        <th>Primary Diagnosis</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <?php
-                    foreach ($patients as $patient) {
-                      echo '<tr data-id= ' . $patient['id'] .'>';
-                      echo '<td>' . $patient['id'] . '</td>';
-                      echo '<td>' . $patient['name'] . '</td>';
-                      echo '<td>' . $patient['age'] . '</td>';
-                      echo '<td>' . $patient['admission_date'] . '</td>';
-                      echo '<td>' . $patient['department'] . '</td>';
-                      echo '<td>' . $patient['diagnosis'] . '</td>';
-                      echo '<td class="status"><div class="status ' . trim($patient['status']) . '">' . $patient['status'] . '</div></td>';
-                      echo '<td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
-                            </div>
-                        </td>';
-                      echo '</tr>';
-                    }
-                    ?>
+                  <!-- Data will be inserted here by JS -->
                 </tbody>
             </table>
         </div>
@@ -193,6 +161,7 @@ $patients = getPatientsFromDatabase();  // Fetch patients from your database
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/fetch_patients.js"></script>
     <script src="../../assets/js/edit-patient.js"></script>
 </body>
 </html>
