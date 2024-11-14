@@ -104,11 +104,7 @@ body {
 }
 
 
-/*check later
-.main-content .cards, .appointments-section {
-    max-width: 600px; /* Adjust to desired width */
-    /*margin: 0 auto; /* Center align within the main content */
-/*}*/
+
 
 
 .dashboard-header {
@@ -132,7 +128,7 @@ body {
 }
 
 .search-box {
-    max-width: 250px; /* Adjust width as needed */
+    max-width: 250px;
 }
 
 .header-right {
@@ -141,8 +137,8 @@ body {
 }
 
 .icon-blue {
-    color: var(--primary-blue); /* Set the navy blue color for icons */
-    font-size: 1.2em; /* Adjust size as needed */
+    color: var(--primary-blue);
+    font-size: 1.2em;
 }
 
 .date-text {
@@ -219,7 +215,7 @@ body {
 }
 
 
-/* Styles added to dashboard.css to help with the patient management */
+
 
 .table th {
     font-weight: 500;
@@ -274,7 +270,7 @@ body {
 }
 
 .appointments-section {
-    /*max-width: 600px; /* Align width with the cards section */
+    
     margin-top: 20px;
 }
 
@@ -286,14 +282,14 @@ body {
 }
 
 .icon-blue {
-    color: var(--primary-blue); /* Set icon color */
+    color: var(--primary-blue);
 }
 
 .appointment-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f8f9fa; /* Light gray background for card */
+    background-color: #f8f9fa;
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -320,7 +316,7 @@ body {
 
 
 .appointment-card button:hover {
-    background-color: #e9ecef; /* Slight hover effect */
+    background-color: #e9ecef;
 }
 
 
@@ -343,7 +339,7 @@ body {
     max-width: 45%;
     background: white;
     border-radius: 12px;
-    padding: 1.875rem;
+    padding: 1rem;
     overflow-x: auto;
 }
 
@@ -357,87 +353,34 @@ body {
 
 
 
-/*table container*/
-.selected-actions {
-    display: flex;
-    gap: .625rem;
-    justify-content: center;
-}
-
-.status {
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 15px;
-    text-align: center;
-    justify-content: center;
-}
-
-.inpatient {
-    background-color: rgba(89, 161, 79, 0.3);
-    color: rgba(89, 161, 79);
-    border: 2px solid rgba(89, 161, 79);
-}
-
-.outpatient {
-    background-color: rgba(215, 28, 30, 0.3);
-    color: rgba(215, 28, 30, 0.8);
-    border: 2px solid rgba(215, 28, 30, 0.8);
-}
-
-.action-btn {
-    display: flex;
-    align-items: center;
-    gap: .3125rem;
-    padding: .5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 24px;
-    font-size: 15px;
-    transition: all 0.2s ease;
-}
-
-.action-btn.edit-btn {
-    background-color: #1A1A6C;
-    color: white;
-}
-
-.action-btn.open-btn {
-    background-color: #1a1f2c;
-    color: white;
-}
-
-.action-btn:hover {
-    transform: translateY(-0.0625rem);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
+/* General table container styling */
 .table-container {
     background: white;
     border-radius: 12px;
-    padding: 1.875rem;
+    padding: 1rem;
     overflow-x: auto;
-    
 }
 
+/* General table styling */
 .table {
     width: 100%;
     border-collapse: collapse;
     border-radius: 12px;
+    table-layout: auto;
 }
 
 .table th, .table td {
-    padding: 1rem;
-    text-align: left;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 14px;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .table th {
     background-color: #f7fafb;
-    font-weight: 100;
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center; 
-    font-size: 15px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.7);
+    text-align: center;
 }
 
 .table td {
@@ -446,6 +389,7 @@ body {
     align-items: center;
 }
 
+/* Rounded corners for the first and last header */
 .table th:first-child {
     border-radius: 12px 0 0 0;
 }
@@ -454,6 +398,7 @@ body {
     border-radius: 0 12px 0 0;
 }
 
+/* Row hover effect */
 .table tbody tr {
     transition: background-color 0.2s ease;
 }
@@ -462,6 +407,66 @@ body {
     background-color: #f9faf9;
 }
 
+/* Selected row styling */
 .table tbody tr.selected {
     background-color: #ecfdf5;
+}
+
+
+
+.inpatient, .outpatient {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 10px;
+    border-radius: 3px;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.inpatient {
+    background-color: rgba(89, 161, 79, 0.3);
+    color: rgba(89, 161, 79);
+    border: 1px solid rgba(89, 161, 79);
+    border-radius: 30px;
+}
+
+.outpatient {
+    background-color: rgba(215, 28, 30, 0.3);
+    color: rgba(215, 28, 30);
+    border: 1px solid rgba(215, 28, 30);
+    border-radius: 30px;
+}
+
+
+/* Action icons container */
+.action-icons {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Styling for individual icons */
+.action-icons a {
+    text-decoration: none;
+    font-size: 16px;
+    color: inherit;
+    transition: transform 0.2s, color 0.2s;
+}
+
+/* Hover effect for icons */
+.action-icons a:hover {
+    transform: scale(1.2);
+    color: #007bff;
+}
+
+/* Table responsiveness */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    .table th, .table td {
+        font-size: 12px;
+    }
 }
