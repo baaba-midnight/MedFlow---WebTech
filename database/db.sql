@@ -18,7 +18,6 @@ CREATE TABLE Users (
     user_password VARCHAR(50) NOT NULL,
     emergency_contact_name varchar(50) NOT NULL,
     emergency_contact_phone varchar(50) NOT NULL
-    
 );
 
 CREATE TABLE Patients (
@@ -29,12 +28,14 @@ CREATE TABLE Patients (
     date_of_birth DATE NOT NULL,
     gender ENUM('M', 'F') NOT NULL,
     `status` ENUM('inpatient', 'outpatient', 'discharged') NOT NULL,
+    is_critical BOOLEAN DEFAULT FALSE,
     contact_number VARCHAR(15) NOT NULL,
     address TEXT NOT NULL,
     emergency_contact_name VARCHAR(100) NOT NULL,
     emergency_contact_number VARCHAR(15) NOT NULL,
     insurance_provider VARCHAR(100),
-    insurance_policy_number VARCHAR(50)
+    insurance_policy_number VARCHAR(50),
+    admission_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE MedicalHistory (

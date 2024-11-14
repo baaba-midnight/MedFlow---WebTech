@@ -10,7 +10,7 @@ $(document).ready(function() {
         // const mname = $('#mname').val().trim();
         const lname = $('#lname').val().trim();
         const dob = $('#dob').val().trim();
-        const sex = $('#gender').val().trim();
+        const gender = $('#gender').val().trim();
         const marital_status = $('#marital').val().trim();
         const bgroup = $('#bgroup').val().trim();
         const email = $('#email').val().trim();
@@ -65,10 +65,10 @@ $(document).ready(function() {
             return;
         }
 
-        if (sex === '') {
+        if (gender === '') {
             $('#alert-container').append(`
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                Select Patient's sex
+                Select Patient's gender
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             `);

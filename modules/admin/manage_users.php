@@ -20,16 +20,18 @@
     <div class="main-content">
         <?php 
             $headerTitle = 'Manage Users';
+            $buttonContent = 'Add User';
             include '../../templates/header.php'; 
         ?>
 
         <div class="table-container">
-            <table class="table" id="patientTable">
+            <table class="table" id="userTable">
                 <thead>
                     <tr>
                         <th>Staff ID</th>
                         <th>Staff Name</th>
-                        <th>Employment Date</th>
+                        <th>Contact</th>
+                        <th>Email</th>
                         <th>Department</th>
                         <th>Role</th>
                         <th>Actions</th>
@@ -37,52 +39,17 @@
                 </thead>
                 
                 <tbody>
-                    <!-- Row 1 -->
-                    <tr>
-                        <td>1</td>
-                        <td>Baaba Amosah</td>
-                        <td>30-09-2004</td>
-                        <td>Pediatrics</td>
-                        <td>Doctor</td>
-                        <td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button class="action-btn edit-btn" onclick="">
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                            </div>
-                        </td> 
-                    </tr>
-                    
-                    <!-- Row 2 -->
-                    <tr>
-                        <td>2</td>
-                        <td>Jonathan Boateng</td>
-                        <td>27-10-2019</td>
-                        <td>Cardiology</td>
-                        <td>Nurse</td>
-                        <td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button class="action-btn edit-btn" onclick="">
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                            </div>
-                        </td> 
-                    </tr>
+                    <!-- Insert data with JS -->
                 </tbody>
             </table>
         </div>
+
+        <!-- Add New User -->
+        <button type="button" class="action-btn add-patient" onclick="">
+          <span class="action-icon"></span> Add Patient
+        </button>
     </div>
+
+    <script src="../../assets/js/fetch_users.js"></script>
 </body>
 </html>

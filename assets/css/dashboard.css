@@ -139,6 +139,11 @@ body {
     opacity: 0.8;
 }
 
+.loading {
+    color: #999;
+    font-size: 16px;
+}
+
 .chart-card {
     background-color: white;
     border-radius: var(--card-border-radius);
@@ -228,4 +233,10 @@ body {
 .btn-sm {
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
+}
+
+.add-patient {
+    background-color: #0d0e5c;
+    margin-top: 50px;
+    color: white;
 }

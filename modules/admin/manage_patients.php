@@ -21,6 +21,7 @@
     <div class="main-content">
         <?php 
             $headerTitle = 'Manage Patients';
+            $buttonContent = 'Add Patient';
             include '../../templates/header.php'; 
         ?>
 
@@ -31,72 +32,26 @@
                         <th>Patient ID</th>
                         <th>Patient Name</th>
                         <th>Age</th>
+                        <th>Gender</th>
                         <th>Admission Date</th>
-                        <th>Department</th>
-                        <th>Primary Diagnosis</th>
                         <th>Status</th>
+                        <th>Primary Diagnosis</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <!-- Row 1 -->
-                    <tr>
-                        <td>1</td>
-                        <td>Baaba Amosah</td>
-                        <td>0</td>
-                        <td>30-09-2004</td>
-                        <td>Pediatrics</td>
-                        <td>Frustration</td>
-                        <td>
-                            <div class="status outpatient">Outpatient</div>
-                        </td>
-                        <td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="">
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
-                            </div>
-                        </td> 
-                    </tr>
-                    
-                    <!-- Row 2 -->
-                    <tr>
-                        <td>2</td>
-                        <td>Baaba Amosah</td>
-                        <td>0</td>
-                        <td>30-09-2004</td>
-                        <td>Pediatrics</td>
-                        <td>Frustration</td>
-                        <td>
-                            <div class="status inpatient">Inpatient</div>
-                        </td>
-                        <td>
-                            <div class="selected-actions" id="selectedActions">
-                                <button class="action-btn edit-btn" onclick="" data-bs-toggle="modal" data-bs-target="#myModal>
-                                    <span class="action-icon">✏️</span> Edit
-                                </button>
-                                <button class="action-btn remove-btn">
-                                    <span class="action-icon">🗑️</span> Remove
-                                </button>
-                                <button class="action-btn open-btn" onclick="">
-                                    <span class="action-icon">📂</span> Open
-                                </button>
-                            </div>
-                        </td> 
-                    </tr>
+                  <!-- Data will be inserted here by JS -->
                 </tbody>
             </table>
         </div>
+
+        <!-- Add New User -->
+        <button type="button" class="action-btn add-patient" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
+          <span class="action-icon"></span> Add Patient
+        </button>
     </div>
-     <!-- The Modal -->
+     <!-- Patient Form Modal -->
      <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
           <div class="modal-content">
@@ -131,7 +86,7 @@
                           <input type="date" id="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob" required>
                         </div>
                         <div class="col">
-                          <label for="gender" class="form-label"><b>Sex*</b></label>
+                          <label for="gender" class="form-label"><b>Gender*</b></label>
                           <select id = "gender" class="form-select">
                             <option>Male</option>
                             <option>Female</option>
@@ -188,6 +143,7 @@
           </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/edit_patient_modal.js"></script>
 </body>

@@ -18,10 +18,16 @@
     border: 2px solid rgba(89, 161, 79);
 }
 
-.outpatient {
+.discharged {
     background-color: rgba(215, 28, 30, 0.3);
     color: rgba(215, 28, 30, 0.8);
     border: 2px solid rgba(215, 28, 30, 0.8);
+}
+
+.outpatient {
+    background-color: rgba(37, 150, 190, 0.3);
+    color: rgba(37,150,190, 0.8);
+    border: 2px solid rgba(37,150,190, 0.8);
 }
 
 .action-btn {
@@ -57,6 +63,43 @@
     border-radius: 12px;
     padding: 1.875rem;
     overflow-x: auto;
+    max-height: 20%;
+    overflow-y: auto;
+    
+    /* Makes scrolling smooth on all browsers */
+    scroll-behavior: smooth;
+    
+    /* For better performance */
+    will-change: scroll-position;
+    
+    /* Hide scrollbar for Chrome/Safari/Opera */
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    /* Style scrollbar track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+    
+    /* Style scrollbar thumb */
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+        
+        &:hover {
+            background: #555;
+        }
+    }
+}
+
+/* Optional: Keep table header visible while scrolling */
+thead {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
 }
 
 .table {

@@ -12,6 +12,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/register.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="main-box">
@@ -21,8 +22,8 @@
         </div>
         
         <div class="form-container">
-            <div>
-                <a href="/index.php" class="logo-home">
+            <div class="logo-home">
+                <a href="/index.php" >
                     <div class="logo">
                         <img src="./assets/images/medflow-logo.png" widtth="300" height="200" alt="MedFlow-logo">
                     </div>
@@ -31,102 +32,95 @@
 
             <h6>Medical Staff Registration</h6>
             <p>Please fill in your information to create an account</p>
+            <div id="alert-container">
+            </div>
+            <form id="myForm" action = "#" method = "POST">
+                <!-- Personal Information -->
+                <div>
+                    <h6>Personal Information</h6>
+                    <div class="form-box">
+                        <label>First Name *</label>
+                        <input type="text" placeholder="Enter first name" name="fname" id="fname" required>
+
+                        <label>Last Name *</label>
+                        <input type="text" placeholder="Enter last name" name="lname" id="lname" required>
+
+                        <label>Date of Birth *</label>
+                        <input type="date" placeholder="mm/dd/yyyy" name="dob" id="dob" required>
+
+                        <label>Gender *</label>
+                        <select name="gender-options" id="gender-options" class="form-select" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div>
+                    <h6>Contact Information</h6>
+                    <div class="form-box">
+                        <label>Email Address *</label>
+                        <input type="text" placeholder="Enter email address" name="email" id="email" required>
+
+                        <label>Phone Number *</label>
+                        <input type="text" placeholder="Enter phone number" name="phone" id="phone" required>
+
+                        <label>Address *</label>
+                        <textarea placeholder="Enter your address" name="address" id="address" required></textarea>
+
+                        <label>Role *</label>
+                        <select name="role-options" id="role-options" class="form-select">
+                            <option value="Doctor">Doctor</option>
+                            <option value="Nurse">Nurse</option>
+                        </select>
+
+                        <label>Department *</label>
+                        <select name="department-options" id="department-options" class="form-select">
+                            <option value="ED/A&E">Emergency department</option>
+                            <option value="OPD">Outpatient Department</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                            <option value="Surgery">Surgery Department</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
+                            <option value="Pharmacy">Pharmacy</option>
+                            <option value="Diagnostic Services">Diagnostic Services</option>
+                        </select>
+
+                        <label>License Number *</label>
+                        <input type="text" id="license-number" name = "license_number" placeholder="Enter professional license number" required>
+                    </div>
+                </div>
+
+                <!-- Account Information -->
+                <div>
+                    <h6>Account Information</h6>
+                    <div class="form-box">
+                        <label>Password *</label>
+                        <input placeholder="Enter password" type="password" name="password" id="password" required>
+
+                        <label>Confirm Password *</label>
+                        <input placeholder="Confirm Password" type="password" name = "password2" id="password2" required>    
+                    </div>
+                </div>
+
+                <!-- Emergency Contact -->
+                <div>
+                    <h6>Emergency Contact</h6>
+                    <div class="form-box">
+                        <label>Emergency Contact Name</label>
+                        <input placeholder="Enter emergency contact name" name = "emergency_name" id="emergency_name" type="text">
+
+                        <label>Emergency Contact Phone</label> 
+                        <input placeholder="Enter emergency contact number" name = "emergency_phone" id="emergency_phone">
+                    </div>
+                </div>
             
-            <!-- Personal Information -->
-            <div>
-                <h6>Personal Information</h6>
-                <form>
-                    <label>First Name *</label>
-                    <input type="text" placeholder="Enter first name" name = "fname" required>
-
-                    <label>Last Name *</label>
-                    <input type="text" placeholder="Enter last name" name = "lname" required>
-
-                    <label>Date of Birth *</label>
-                    <input type="date" placeholder="mm/dd/yyyy" name="dob" required>
-
-                    <label>Gender *</label>
-                    <select name="gender-options" id="gender-options" class="form-select">
-                        <option value="" selected disabled>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </form>
-            </div>
-
-            <!-- Contact Information -->
-            <div>
-                <h6>Contact Information</h6>
-                <form>
-                    <label>Email Address *</label>
-                    <input type="text" placeholder="Enter email address" name = "email" required>
-
-                    <label>Phone Number *</label>
-                    <input type="text" placeholder="Enter phone number" name = "phone" required>
-
-                    <label>Address *</label>
-                    <textarea placeholder="Enter your address" name = "address"></textarea>
-
-                    <label>Role *</label>
-                    <select name="role-options" id="role-options" class="form-select">
-                        <option value="" selected disabled>Select Role</option>
-                        <option value="Doctor">Doctor</option>
-                        <option value="Nurse">Nurse</option>
-                    </select>
-
-                    <label>Department *</label>
-                    <select name="department-options" id="department-options" class="form-select">
-                    <option value="" selected disabled>Select Department</option>
-                        <option value="ED/A&E">Emergency department</option>
-                        <option value="OPD">Outpatient Department</option>
-                        <option value="Internal Medicine">Internal Medicine</option>
-                        <option value="Surgery">Surgery Department</option>
-                        <option value="Pediatrics">Pediatrics</option>
-                        <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                        <option value="Pharmacy">Pharmacy</option>
-                        <option value="Diagnostic Services">Diagnostic Services</option>
-                    </select>
-
-                    <label>License Number *</label>
-                    <input type="text" name = "license_number" placeholder="Enter professional license number" required>
-                </form>
-            </div>
-
-            <!-- Account Information -->
-            <div>
-                <h6>Account Information</h6>
-                <form>
-                    <label>Username *</label>
-                    <input placeholder="Enter Username" type="text" required>
-
-                    <label>Password *</label>
-                    <input placeholder="Enter password" type="password" name = "password" required>
-
-                    <label>Confirm Password *</label>
-                    <input placeholder="Confirm Password" type="password" name = "password2" required>    
-                </form>
-            </div>
-
-            <!-- Emergency Contact -->
-            <div>
-                <h6>Emergency Contact</h6>
-                <form>
-                    <label>Emergency Contact Name *</label>
-                    <input placeholder="Enter emergency contact name" name = "emergency_name" type="text" required>
-
-                    <label>Emergency Contact Phone</label> 
-                    <input placeholder="Enter emergency contact name" name = "emergency_phone">
-                </form>
-            </div>
-            
-            <div class="checkbox">
-                <input type="checkbox">
-                <p>I agree to the <a>Terms of Service</a> and <a>Privacy Policy</a></p>
-            </div>
-
-            <button class="btn mt-4">Register</button>
+            </form>
+                <button id="register" class="btn mt-4">Register</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/register.js"></script>
 </body>
 </html>

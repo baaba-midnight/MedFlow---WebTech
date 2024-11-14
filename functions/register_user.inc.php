@@ -1,7 +1,7 @@
 <?php
 
 //db connection
-include './includes/config.inc.php';
+include '../includes/config.inc.php';
 
 
 //Check for form data
@@ -60,10 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
             header("Location: register.html");
         }
     }
-    $stmt ->close();
-    
-
+    $stmt->close();
 }
 
-$conn -> close();
+$conn->close();
 ?>
