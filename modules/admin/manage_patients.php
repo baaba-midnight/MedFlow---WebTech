@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
     <link rel="stylesheet" href="../../assets/css/admin-tables.css">
     <link rel="stylesheet" href="../../assets/css/edit.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <?php include '../../templates/admin-sidebar.php'; ?>
@@ -61,99 +62,82 @@
                     <img src="../../assets/images/medflow-logo.png" widtth="200" height="100" alt="MedFlow-logo">
                 </div>
                 
-                <h4 class="modal-title mt-3 mb-2" id="modalTitle"><b>Edit Patient Information</b></h4>
-                <form>
+                <h4 class="modal-title mt-3 mb-2"><b>Edit Patient Information</b></h4>
+                <div id="alert-container"></div>
+                <form method="POST" id='myForm' action = "#">
                     <div class="row mt-4">
                       <div class="col">
                         <label for="fname" class="form-label"><b>First Name*</b></label>
-                        <input type="text" id="fname" class="form-control" placeholder="Enter first name" name="fname">
+                        <input type="text" id="fname" class="form-control" placeholder="Enter first name" name="fname" required>
                       </div>
                       <div class="col">
-                        <label for="mname" class="form-label"><b>Middle Name*</b></label>
+                        <label for="mname" class="form-label"><b>Middle Name</b></label>
                         <input type="text" id="mname" class="form-control" placeholder="Enter middle name" name="mname">
                       </div>
                       <div class="col">
                         <label for="lname" class="form-label"><b>Last Name*</b></label>
-                        <input type="text" id="lname" class="form-control" placeholder="Enter last name" name="lname">
+                        <input type="text" id="lname" class="form-control" placeholder="Enter last name" name="lname" required>
                       </div>
                     </div>
 
                     <div class="row mt-4">
                         <div class="col">
                           <label for="dob" class="form-label"><b>Date of Birth*</b></label>
-                          <input type="date" id="dob" name="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob">
+                          <input type="date" id="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob" required>
                         </div>
                         <div class="col">
-                          <label for="sex" class="form-label"><b>Sex*</b></label>
-                          <select id="sex" name="sex" class="form-select">
-                            <option value="" disabled selected hidden>Select Gender</option>
-                            <option value="male" <?php echo ($sex == 'male') ? 'selected' : ''; ?>>Male</option>
-                            <option value="female" <?php echo ($sex == 'female') ? 'selected' : ''; ?>>Female</option>
+                          <label for="gender" class="form-label"><b>Gender*</b></label>
+                          <select id = "gender" class="form-select">
+                            <option>Male</option>
+                            <option>Female</option>
                           </select>
                         </div>
                         <div class="col">
-                          <label for="martial_status" class="form-label"><b>Marital Status*</b></label>
-                          <select id="marital_status" name="marital_status" class="form-select">
-                          <option value="" disabled selected hidden>Select Marital Status</option>
-                            <option value="single" <?php echo ($marital_status == 'single') ? 'selected' : ''; ?>>Single</option>
-                            <option value="married" <?php echo ($marital_status == 'married') ? 'selected' : ''; ?>>Married</option>
-                            <option value="divorced" <?php echo ($marital_status == 'divorced') ? 'selected' : ''; ?>>Divorced</option>
-                            <option value="widowed" <?php echo ($marital_status == 'widowed') ? 'selected' : ''; ?>>Widowed</option>
+                          <label for="marital" class="form-label"><b>Marital Status*</b></label>
+                          <select id = "marital" class="form-select">
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Widowed</option>
+                            <option>Divorced</option>
+                            <option>Separated</option>
+                            <option>Registered Partnership</option>
                           </select>
                         </div>
                       </div>
 
                       <div class="row mt-4">
                         <div class="col">
+                          <label for="bgroup" class="form-label"><b>Blood Group*</b></label>
+                          <select id="bgroup" class="form-select">
+                            <option>O</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>AB</option>
+                          </select>
+                        </div>
+                        <div class="col">
                           <label for="email" class="form-label"><b>Email*</b></label>
-                          <input type="email" id="email" class="form-control" placeholder="Enter email address" name="email">
+                          <input type="email" id="email" class="form-control" placeholder="Enter email address" name="email" required>
                         </div>
                         <div class="col">
                           <label for="phone" class="form-label"><b>Phone Number*</b></label>
-                          <input type="tel" id="phone" class="form-control" placeholder="Enter phone number" name="phone">
+                          <input type="tel" id="phone" class="form-control" placeholder="Enter phone number. E.g +123456789" name="phone" required>
                         </div>
                     </div>
 
                     <label for="address" class="form-label mt-4"><b>Address*</b></label>
-                    <textarea class="form-control" id="address" name="address" rows="5" maxlength="500" placeholder="Enter your address"></textarea>
+                    <textarea class="form-control" id="address" rows="5" maxlength="500" placeholder="Enter your address" required></textarea>
 
                     <label for="medications" class="form-label mt-4"><b>Current Medications*</b></label>
-                    <textarea class="form-control" id="medications" name="medications" rows="5" maxlength="500" placeholder="List your medications"></textarea>
-
-                    <div class="row mt-4">
-                        <div class="col">
-                            <label for="insuranceProvider" class="form-label"><b>Insurance Provider</b></label>
-                            <input type="text" id="insuranceProvider" name="insuranceProvider" class="form-control" placeholder="Insurance Company Name" name="insuranceProvider">
-                        </div>
-
-                        <div class="col">
-                            <label for="policyNumber" class="form-label"><b>Policy Number*</b></label>
-                            <input type="tel" id="policyNumber" name="policyNumber" class="form-control" placeholder="Insurance Policy Number" name="policyNumber">
-                        </div>
-                        <div class="col">
-                          <label for="blood_group" class="form-label"><b>Blood Group*</b></label>
-                          <select id="blood_group" name="blood_group" class="form-select">
-                            <option value="" disabled selected hidden>Select Blood Type</option>
-                            <option value="A+" <?php echo ($blood_group == 'A+') ? 'selected' : ''; ?>>A+</option>
-                            <option value="A-" <?php echo ($blood_group == 'A-') ? 'selected' : ''; ?>>A-</option>
-                            <option value="B+" <?php echo ($blood_group == 'B+') ? 'selected' : ''; ?>>B+</option>
-                            <option value="B-" <?php echo ($blood_group == 'B-') ? 'selected' : ''; ?>>B-</option>
-                            <option value="AB+" <?php echo ($blood_group == 'AB+') ? 'selected' : ''; ?>>AB+</option>
-                            <option value="AB-" <?php echo ($blood_group == 'AB-') ? 'selected' : ''; ?>>AB-</option>
-                            <option value="O+" <?php echo ($blood_group == 'O+') ? 'selected' : ''; ?>>O+</option>
-                            <option value="O-" <?php echo ($blood_group == 'O-') ? 'selected' : ''; ?>>O-</option>
-                          </select>
-                        </div>    
-                    </div>
-
+                    <textarea class="form-control" id="medications" rows="5" maxlength="500" placeholder="List your medications" required></textarea>
 
                 </form>
             </div>
       
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark cancelBtn" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-custom" id="submitBtn">Save Changes</button>
+              <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+              <button class="btn btn-custom" id="edit" >Save Changes</button>
             </div>
       
           </div>
@@ -161,7 +145,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/fetch_patients.js"></script>
-    <script src="../../assets/js/edit-patient.js"></script>
+    <script src="../../assets/js/edit_patient_modal.js"></script>
 </body>
 </html>

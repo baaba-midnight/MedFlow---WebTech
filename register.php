@@ -12,6 +12,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/register.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="main-box">
@@ -31,8 +32,9 @@
 
             <h6>Medical Staff Registration</h6>
             <p>Please fill in your information to create an account</p>
-            
-            <form>
+            <div id="alert-container">
+            </div>
+            <form id="myForm" action = "#" method = "POST">
                 <!-- Personal Information -->
                 <div>
                     <h6>Personal Information</h6>
@@ -48,7 +50,6 @@
 
                         <label>Gender *</label>
                         <select name="gender-options" id="gender-options" class="form-select" required>
-                            <option value="" selected disabled>Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
@@ -70,14 +71,12 @@
 
                         <label>Role *</label>
                         <select name="role-options" id="role-options" class="form-select">
-                            <option value="" selected disabled>Select Role</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Nurse">Nurse</option>
                         </select>
 
                         <label>Department *</label>
                         <select name="department-options" id="department-options" class="form-select">
-                        <option value="" selected disabled>Select Department</option>
                             <option value="ED/A&E">Emergency department</option>
                             <option value="OPD">Outpatient Department</option>
                             <option value="Internal Medicine">Internal Medicine</option>
@@ -89,7 +88,7 @@
                         </select>
 
                         <label>License Number *</label>
-                        <input type="text" name = "license_number" placeholder="Enter professional license number" required>
+                        <input type="text" id="license-number" name = "license_number" placeholder="Enter professional license number" required>
                     </div>
                 </div>
 
@@ -113,18 +112,15 @@
                         <input placeholder="Enter emergency contact name" name = "emergency_name" id="emergency_name" type="text">
 
                         <label>Emergency Contact Phone</label> 
-                        <input placeholder="Enter emergency contact name" name = "emergency_phone" id="emergency_phone">
+                        <input placeholder="Enter emergency contact number" name = "emergency_phone" id="emergency_phone">
                     </div>
                 </div>
-                
-                <div class="checkbox">
-                    <input type="checkbox">
-                    <p>I agree to the <a>Terms of Service</a> and <a>Privacy Policy</a></p>
-                </div>
+            
             </form>
-                <button class="btn mt-4">Register</button>
+                <button id="register" class="btn mt-4">Register</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/register.js"></script>
 </body>
 </html>
