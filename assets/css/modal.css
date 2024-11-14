@@ -1,5 +1,5 @@
 .modal {
-    display: block;
+    display: none;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -74,4 +74,49 @@
 .vitals-value {
     font-size: 1.25rem;
     font-weight: 600;
+}
+
+.severity-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875;
+    font-weight: 600;
+}
+
+.severity-severe {
+    background-color: #fde8e8;
+    color: #981b1b;
+}
+
+.severity-moderate {
+    background-color: #fdf6b2;
+    color: #723b13;
+}
+
+.severity-mild {
+    background-color: #def7ec;
+    color: #046c4e;
+}
+
+.medication-active {
+    background-color: #def7ec;
+    color: #045c4e;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.medication-ended {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.date-cell {
+    min-width: 100px;
+    text-align: center;
 }

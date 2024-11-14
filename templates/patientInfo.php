@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Information Modal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
 </head>
 <body>
-
-    <button type="button" onclick="openModal()">Click Me</button>
-    <div class="modal" id="modal">
+    <div class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body p-4">
@@ -141,86 +139,11 @@
                             <!-- Medications Tab Content -->
                             <div class="tab-pane fade" id="medications">
                                 <p class="text-muted">No current medications</p>
-
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead class="table-light">
-                                            <tr>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Medication</th>
-                                                <th scope="col">Dosage</th>
-                                                <th scope="col">Frequency</th>
-                                                <th scope="col">Start Date</th>
-                                                <th scope="col">End Date</th>
-                                                <th scope="col">Prescribed By</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><span class="medication-active">Active</span></td>
-                                                <td class="medication-cell">Lisinopril</td>
-                                                <td>10mg</td>
-                                                <td>Once Daily</td>
-                                                <td class="date-cell">2024-01-15</td>
-                                                <td class="date-cell">-</td>
-                                                <td class="doctor-cell">Dr. John Smith</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="medication-active">Active</span></td>
-                                                <td class="medication-cell">Metformin</td>
-                                                <td>500mg</td>
-                                                <td>Twice daily</td>
-                                                <td class="date-cell">2024-02-01</td>
-                                                <td class="date-cell">-</td>
-                                                <td class="doctor-cell">Dr. Sarah Johnson</td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="medication-ended">Ended</span></td>
-                                                <td class="medication-cell">Amoxicillin</td>
-                                                <td>250mg</td>
-                                                <td>Three times daily</td>
-                                                <td class="date-cell">2024-01-01</td>
-                                                <td class="date-cell">2024-01-10</td>
-                                                <td class="doctor-cell">Dr. Michael Brown</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
 
                             <!-- Allergies Tab Content -->
                             <div class="tab-pane fade" id="allergies" role="tabpanel">
                                 <p class="text-muted">No known allergies</p>
-
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Allergy Type</th>
-                                                <th scope="col">Severity</th>
-                                                <th scope="col">Notes</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <td>Penicillin</td>
-                                                <td><span class="severity-badge severity-severe">Severe</span></td>
-                                                <td>Anaphylactice reaction</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Aspirin</td>
-                                                <td><span class="severity-badge severity-mild">Mild</span></td>
-                                                <td>Causes mild rash</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Latex</td>
-                                                <td><span class="severity-badge severity-moderate">Moderate</span></td>
-                                                <td>Skin reaction</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
 
                             <!-- Lab Results Tab Content-->
@@ -235,6 +158,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/patientInfo-modal.js"></script>
+    <script src="../assets/js/patientInfo-modal.js"></script>
 </body>
 </html>

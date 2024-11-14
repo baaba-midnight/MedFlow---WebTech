@@ -27,3 +27,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function getInfo() {
+    
+}
+
+function openModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+      closeModal();
+    }
+}
