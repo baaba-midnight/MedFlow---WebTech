@@ -11,6 +11,7 @@
     <!-- For icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
     <link rel="stylesheet" href="../../assets/css/admin-tables.css">
     <link rel="stylesheet" href="../../assets/css/edit.css">
@@ -19,6 +20,8 @@
 </head>
 <body>
     <?php include '../../templates/admin-sidebar.php'; ?>
+
+    <!-- Main Content -->
     <div class="main-content">
         <?php 
             $headerTitle = 'Manage Patients';
@@ -47,20 +50,21 @@
             </table>
         </div>
     </div>
-     <!-- Patient Form Modal -->
-     <div class="modal fade" id="myModal">
+
+    <!-- Patient Form Modal -->
+    <div class="modal fade" id="myModal">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
           <div class="modal-content">
       
             <!-- Modal body -->
-            <div class="modal-body ms-3"  style="font-family:'Roboto', sans-serif;">
+            <div class="modal-body ms-3" style="font-family:'Roboto', sans-serif;">
                 <div class="d-flex align-items-center justify-content-center mb-2">
-                    <img src="../../assets/images/medflow-logo.png" widtth="200" height="100" alt="MedFlow-logo">
+                    <img src="../../assets/images/medflow-logo.png" width="200" height="100" alt="MedFlow-logo">
                 </div>
                 
                 <h4 class="modal-title mt-3 mb-2"><b>Edit Patient Information</b></h4>
                 <div id="alert-container"></div>
-                <form method="POST" id='myForm' action = "#">
+                <form method="POST" id='myForm' action="#">
                     <div class="row mt-4">
                       <div class="col">
                         <label for="fname" class="form-label"><b>First Name*</b></label>
@@ -83,23 +87,23 @@
                         </div>
                         <div class="col">
                           <label for="gender" class="form-label"><b>Gender*</b></label>
-                          <select id = "gender" class="form-select">
+                          <select id="gender" class="form-select">
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                           </select>
                         </div>
                         <div class="col">
                           <label for="marital" class="form-label"><b>Marital Status*</b></label>
-                          <select id = "marital" class="form-select">
+                          <select id="marital" class="form-select">
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
                             <option value="Widowed">Widowed</option>
-                            <option value="Widowed">Divorced</option>
+                            <option value="Divorced">Divorced</option>
                           </select>
                         </div>
-                      </div>
+                    </div>
 
-                      <div class="row mt-4">
+                    <div class="row mt-4">
                         <div class="col">
                           <label for="bgroup" class="form-label"><b>Blood Group*</b></label>
                           <select id="bgroup" class="form-select">
@@ -136,6 +140,7 @@
       
           </div>
         </div>
+    </div>
 
     <!-- Display Patient Information Modal -->
     <?php include "../../templates/patientInfo.php"; ?>
@@ -146,14 +151,14 @@
       $saveButton = 'Add Patient';
       include '../../templates/add_modal.inc.php';
     ?>
-    </div>
 
     <div id="modals">
     </div>
+  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/fetch_patients.js"></script>
     <script src="../../assets/js/edit-patient.js"></script>
-    <script src="../../assets/js/patientInfo-modal.js"></script>
+    <!-- <script src="../../assets/js/patientInfo-modal.js"></script> -->
 </body>
 </html>
