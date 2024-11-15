@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
     <link rel="stylesheet" href="../../assets/css/admin-tables.css">
     <link rel="stylesheet" href="../../assets/css/edit.css">
+    <link rel="stylesheet" href="../../assets/css/modalDisplayInfo.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
@@ -45,11 +46,6 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Add New User -->
-        <button type="button" class="action-btn add-patient" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
-          <span class="action-icon"></span> Add Patient
-        </button>
     </div>
      <!-- Patient Form Modal -->
      <div class="modal fade" id="myModal">
@@ -135,11 +131,21 @@
             <!-- Modal footer -->
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-              <button class="btn btn-custom" id="edit" >Save Changes</button>
+              <button class="btn btn-custom" id="edit">Save Changes</button>
             </div>
       
           </div>
         </div>
+
+    <!-- Display Patient Information Modal -->
+    <?php include "../../templates/patientInfo.php"; ?>
+
+    <!-- Add Modal Inclusion -->
+    <?php 
+      $modalTitle = 'Add New Patient';
+      $saveButton = 'Add Patient';
+      include '../../templates/add_modal.inc.php';
+    ?>
     </div>
 
     <div id="modals">
@@ -148,5 +154,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/fetch_patients.js"></script>
     <script src="../../assets/js/edit-patient.js"></script>
+    <script src="../../assets/js/patientInfo-modal.js"></script>
 </body>
 </html>

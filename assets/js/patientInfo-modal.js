@@ -32,24 +32,24 @@ function getInfo() {
     
 }
 
-function openModal() {
-    const modal = document.getElementById('modal');
+function openPtientModal() {
+    const modal = document.getElementById('addModal');
     modal.style.display = 'block';
 }
 
-function closeModal() {
-    const modal = document.getElementById('modal');
+function closePatientModal() {
+    const modal = document.getElementById('addModal');
     modal.style.display = 'none';
 }
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        closeModal();
+        closePatientModal();
     }
 });
 
 window.onclick = function(event) {
     if (event.target == modal) {
-      closeModal();
+      closePatientModal();
     }
 }

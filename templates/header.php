@@ -17,9 +17,15 @@ $buttonContent = $buttonContent ?? '';
         <?php endif; ?>
 
         <?php if ($buttonContent != ''): ?>
-            <button class="btn btn-dark">
-                <i class="fas fa-plus"></i><?php echo $buttonContent; ?></a>
-            </button>
+            <?php if ($buttonContent === 'Add Patient'): ?>
+                <button class="btn btn-dark" onclick="openPatientModal()">
+                    <i class="fas fa-plus"></i><?php echo $buttonContent; ?>
+                </button>
+            <?php else: ?>
+                <button class="btn btn-dark">
+                    <i class="fas fa-plus"></i><?php echo $buttonContent; ?>
+                </button>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>
