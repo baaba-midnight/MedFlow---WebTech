@@ -144,20 +144,20 @@
                             
                             <td>Frustration</td>
                             <td>
-                                <div class="status outpatient">Outpatient</div>
+                                <div class="outpatient">Outpatient</div>
                             </td>
                             <td>
-                                <div class="selected-actions" id="selectedActions">
-                                    <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="">
-                                        <span class="action-icon">✏️</span> Edit
-                                    </button>
-                                    <button class="action-btn remove-btn">
-                                        <span class="action-icon">🗑️</span> Remove
-                                    </button>
-                                    <button class="action-btn open-btn" onclick="">
-                                        <span class="action-icon">📂</span> Open
-                                    </button>
-                                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
+                                
+                                <div class="action-icons">
+                                    <a href="#" class="edit-icon" title="Edit">
+                                        ✏️
+                                    </a>
+                                    <a href="#" class="remove-icon" title="Remove">
+                                        🗑️
+                                    </a>
+                                    <a href="#" class="open-icon" title="Open">
+                                        📂
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -171,19 +171,19 @@
                             
                             <td>Headache</td>
                             <td>
-                                <div class="status inpatient">Inpatient</div>
+                                <div class="inpatient">Inpatient</div>
                             </td>
                             <td>
-                                <div class="selected-actions" id="selectedActions">
-                                    <button class="action-btn edit-btn" onclick="" data-bs-toggle="modal" data-bs-target="#myModal>
-                                        <span class="action-icon">✏️</span> Edit
-                                    </button>
-                                    <button class="action-btn remove-btn">
-                                        <span class="action-icon">🗑️</span> Remove
-                                    </button>
-                                    <button class="action-btn open-btn" onclick="">
-                                        <span class="action-icon">📂</span> Open
-                                    </button>
+                                <div class="action-icons">
+                                    <a href="#" class="edit-icon" title="Edit">
+                                        ✏️
+                                    </a>
+                                    <a href="#" class="remove-icon" title="Remove">
+                                        🗑️
+                                    </a>
+                                    <a href="#" class="open-icon" title="Open">
+                                        📂
+                                    </a>
                                 </div>
                             </td>
                         </tr>

@@ -34,7 +34,6 @@ CREATE TABLE Patients (
     marital_status ENUM('Married', 'Divorced', 'Single', 'Widowed') NOT NULL,
     blood_group ENUM('O', 'A', 'B', 'AB') NOT NULL,
     `status` ENUM('inpatient', 'outpatient', 'discharged') NOT NULL,
-    is_critical BOOLEAN DEFAULT FALSE,
     contact_number VARCHAR(15) NOT NULL,
     address TEXT NOT NULL,
     admission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -71,7 +70,7 @@ CREATE TABLE Departments (
 -- Doctors table
 CREATE TABLE Doctors (
     doctor_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL, 
+    user_id INT NOT NULL,
     specialization VARCHAR(100) NOT NULL,
     department_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
@@ -107,7 +106,7 @@ CREATE TABLE Medications (
 CREATE TABLE Appointments (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT,
-    doctor_user_id INT NOT NULL, 
+    doctor_user_id INT NOT NULL,
     appointment_date DATE NOT NULL,
     appointment_time TIME NOT NULL,
     appoint_condition ENUM('scheduled', 'completed', 'cancelled') DEFAULT 'scheduled',
@@ -121,7 +120,7 @@ CREATE TABLE Appointments (
 -- Staff table
 CREATE TABLE Staff (
     staff_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL, 
+    user_id INT NOT NULL,
     task TEXT NOT NULL,
     department_id INT,
     FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
