@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS hospital_management;
 CREATE DATABASE hospital_management;
 USE hospital_management;
 
-CREATE TABLE medFlow_Users (
+CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE medFlow_Users (
     
 );
 
-CREATE TABLE medFlow_Patients (
+CREATE TABLE Patients (
     patient_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     middle_name VARCHAR(50) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE medFlow_Patients (
     insurance_policy_number VARCHAR(50)
 );
 
-CREATE TABLE medFlow_MedicalHistory (
+CREATE TABLE MedicalHistory (
     medical_history_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
     condition_name VARCHAR(100) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE medFlow_MedicalHistory (
     FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
-CREATE TABLE medFlow_Allergies (
+CREATE TABLE Allergies (
     allergy_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
     allergy_type VARCHAR(100) NOT NULL,
@@ -56,14 +56,14 @@ CREATE TABLE medFlow_Allergies (
     FOREIGN KEY (patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
-CREATE TABLE medFlow_Departments (
+CREATE TABLE Departments (
     department_id INT AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(100) NOT NULL,
     location VARCHAR(100) NOT NULL
     
 );
 
-CREATE TABLE medFlow_Doctors (
+CREATE TABLE Doctors (
     doctor_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     specialization VARCHAR(100) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE medFlow_Doctors (
 );
 
 
-CREATE TABLE medFlow_DoctorDepartment (
+CREATE TABLE DoctorDepartment (
     department_id INT NOT NULL,
     doctor_id INT NOT NULL,
     is_head_doctor BOOLEAN DEFAULT FALSE,
@@ -82,7 +82,7 @@ CREATE TABLE medFlow_DoctorDepartment (
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
-CREATE TABLE medFlow_Medications (
+CREATE TABLE Medications (
     medication_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
     medication_name VARCHAR(100) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE medFlow_Medications (
     FOREIGN KEY (prescribed_by) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
-CREATE TABLE medFlow_Appointments (
+CREATE TABLE Appointments (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT,
     doctor_user_id INT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE medFlow_Appointments (
 );
 
 
-CREATE TABLE medFlow_Staff (
+CREATE TABLE Staff (
     staff_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     task TEXT NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE medFlow_Staff (
 );
 
 
-CREATE TABLE medFlow_Vitals (
+CREATE TABLE Vitals (
     vital_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT,
     recorded_date DATETIME NOT NULL,
@@ -135,7 +135,7 @@ CREATE TABLE medFlow_Vitals (
 );
 
 
-CREATE TABLE medFlow_LabResults (
+CREATE TABLE LabResults (
     lab_result_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,
     test_type VARCHAR(100) NOT NULL,
