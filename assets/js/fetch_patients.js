@@ -28,11 +28,15 @@ fetch('../../functions/fetch_patients.inc.php')
             row.setAttribute('data-id', patient["Patient ID"]);
             // console.log(patient["Patient ID"]);
             age = calculateAge(patient["Age"])
+
+            console.log(age);
+            fullName = patient["first_name"] + ' ' + patient["last_name"]
+            console.log(patient['first_name']);
             
 
             row.innerHTML = `
                 <td>${patient["Patient ID"]}</td>
-                <td>${patient["Full Name"]}</td>
+                <td>${fullName}</td>
                 <td>${age}</td>
                 <td>${patient["Gender"]}</td>
                 <td>${patient["Admission Date"]}</td>
