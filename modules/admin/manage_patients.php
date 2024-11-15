@@ -88,19 +88,17 @@
                         <div class="col">
                           <label for="gender" class="form-label"><b>Gender*</b></label>
                           <select id = "gender" class="form-select">
-                            <option>Male</option>
-                            <option>Female</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
                           </select>
                         </div>
                         <div class="col">
                           <label for="marital" class="form-label"><b>Marital Status*</b></label>
                           <select id = "marital" class="form-select">
-                            <option>Single</option>
-                            <option>Married</option>
-                            <option>Widowed</option>
-                            <option>Divorced</option>
-                            <option>Separated</option>
-                            <option>Registered Partnership</option>
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Widowed">Widowed</option>
+                            <option value="Widowed">Divorced</option>
                           </select>
                         </div>
                       </div>
@@ -142,6 +140,9 @@
       
           </div>
         </div>
+    </div>
+
+    <div id="modals">
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
