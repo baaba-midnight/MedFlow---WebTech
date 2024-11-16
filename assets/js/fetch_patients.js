@@ -50,124 +50,16 @@ fetch('../../functions/fetch_patients.inc.php')
                         <button type="button" class="action-btn edit-btn" data-id="${patient["Patient ID"]}">
                             <span class="action-icon">✏️</span> Edit
                         </button>
-                        <button class="action-btn remove-btn">
+                        <button class="action-btn remove-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
                             <span class="action-icon">🗑️</span> Remove
                         </button>
-                        <button class="action-btn open-btn" onclick="">
+                        <button class="action-btn open-btn" data-bs-toggle="modal" data-bs-target="#displayModal">
                             <span class="action-icon">📂</span> Open
                         </button>
-                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
                     </div>
                 </td>
             `;
             tableBody.appendChild(row);
-
-            // modal.innerHTML = `
-            //     <div class="modal fade" id="myModal${patient["Patient ID"]}">
-            //         <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            //             <div class="modal-content">
-
-            //                 <!-- Modal body -->
-            //                 <div class="modal-body ms-3" style="font-family:'Roboto', sans-serif;">
-            //                     <div class="d-flex align-items-center justify-content-center mb-2">
-            //                         <img src="../../assets/images/medflow-logo.png" width="200" height="100" alt="MedFlow-logo">
-            //                     </div>
-
-            //                     <h4 class="modal-title mt-3 mb-2"><b>Edit Patient Information</b></h4>
-            //                     <div id="alert-container"></div>
-            //                     <form method="POST" id='myForm' action="#">
-            //                         <div class="row mt-4">
-            //                             <div class="col">
-            //                                 <label for="fname" class="form-label"><b>First Name*</b></label>
-            //                                 <input type="text" id="fname" class="form-control" placeholder="Enter first name" name="fname" value="${patient["first_name"]}" required>
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="mname" class="form-label"><b>Middle Name</b></label>
-            //                                 <input type="text" id="mname" class="form-control" placeholder="Enter middle name" name="mname" value="${patient["middle_name"]}">
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="lname" class="form-label"><b>Last Name*</b></label>
-            //                                 <input type="text" id="lname" class="form-control" placeholder="Enter last name" name="lname" value="${patient["last_name"]}" required>
-            //                             </div>
-            //                         </div>
-
-            //                         <div class="row mt-4">
-            //                             <div class="col">
-            //                                 <label for="dob" class="form-label"><b>Date of Birth*</b></label>
-            //                                 <input type="date" id="dob" class="form-control" placeholder="mm/dd/yyyy" name="dob" value="${patient["Age"]}" required>
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="gender" class="form-label"><b>Gender*</b></label>
-            //                                 <select id="gender" class="form-select">
-            //                                     <option value="M" <?php echo ${patient["Gender"]} === 'M' ? 'selected' : ''; ?> Male</option>
-            //                                     <option value="F" <?php echo ${patient["Gender"]} === 'F' ? 'selected' : ''; ?> Female</option>
-            //                                 </select>
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="marital" class="form-label"><b>Marital Status*</b></label>
-            //                                 <select id="marital" class="form-select">
-            //                                     <option value="Single" <?php echo ${patient["marital_status"]} === 'Single' ? 'selected' : ''; ?>Single</option>
-            //                                     <option value="Married" <?php echo ${patient["marital_status"]} === 'Married' ? 'selected' : ''; ?>Married</option>
-            //                                     <option value="Widowed" <?php echo ${patient["marital_status"]} === 'Widowed' ? 'selected' : ''; ?>Widowed</option>
-            //                                     <option value="Divorced" <?php echo ${patient["marital_status"]} === 'Divorced' ? 'selected' : ''; ?>Divorced</option>
-            //                                 </select>
-            //                             </div>
-            //                         </div>
-
-            //                         <div class="row mt-4">
-            //                             <div class="col">
-            //                                 <label for="bgroup" class="form-label"><b>Blood Group*</b></label>
-            //                                 <select id="bgroup" class="form-select">
-            //                                     <option value="O" <?php echo ${patient["blood_group"]} === 'O' ? 'selected' : ''; ?>O</option>
-            //                                     <option value="A" <?php echo ${patient["blood_group"]} === 'A' ? 'selected' : ''; ?>A</option>
-            //                                     <option value="B" <?php echo ${patient["blood_group"]} === 'B' ? 'selected' : ''; ?>B</option>
-            //                                     <option value="AB" <?php echo ${patient["blood_group"]} === 'AB' ? 'selected' : ''; ?>AB</option>
-            //                                 </select>
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="email" class="form-label"><b>Email*</b></label>
-            //                                 <input type="email" id="email" class="form-control" placeholder="Enter email address" name="email" value="${patient["email"]}" required>
-            //                             </div>
-            //                             <div class="col">
-            //                                 <label for="phone" class="form-label"><b>Phone Number*</b></label>
-            //                                 <input type="tel" id="phone" class="form-control" placeholder="Enter phone number. E.g +123456789" name="phone" value="${patient["contact_number"]}" required>
-            //                             </div>
-            //                         </div>
-
-            //                         <label for="address" class="form-label mt-4"><b>Address*</b></label>
-            //                         <textarea class="form-control" id="address" rows="5" maxlength="500" placeholder="Enter your address" required>${patient["address"]}</textarea>
-
-            //                         <label for="medications" class="form-label mt-4"><b>Current Medications*</b></label>
-            //                         <textarea class="form-control" id="medications" rows="5" maxlength="500" placeholder="List your medications" required></textarea>
-
-            //                         <div class="row mt-4">
-            //                             <div class="col">
-            //                                 <label for="status" class="form-label"><b>Status*</b></label>
-            //                                 <select id="bgroup" class="form-select">
-            //                                     <option value="Discharged" <?php echo ${patient["Status"]} === 'Discharged' ? 'selected' : ''; ?>Discharged</option>
-            //                                     <option value="Outpatient" <?php echo ${patient["Status"]} === 'Outpatient' ? 'selected' : ''; ?>Outpatient</option>
-            //                                     <option value="Inpatient" <?php echo ${patient["Status"]} === 'Inpatient' ? 'selected' : ''; ?>Inpatient</option>
-            //                                 </select>
-            //                             </div>
-            //                             <div class="col">
-            //                             </div>
-            //                             <div class="col">
-            //                             </div>
-            //                         </div>
-            //                     </form>
-            //                 </div>
-
-            //                 <!-- Modal footer -->
-            //                 <div class="modal-footer">
-            //                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-            //                     <button class="btn btn-custom" id="edit${patient["Patient ID"]}">Save Changes</button>
-            //                 </div>
-
-            //             </div>
-            //         </div>
-            //     </div>
-            // `; 
-            // modals.appendChild(modal);
 
         });
     } else {

@@ -1,5 +1,4 @@
-
-<div class="modal">
+<div class="modal fade" id="displayModal" data-bs-backdrop="true" data-bs-keyboard="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-4">
@@ -42,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-sm-4 text-center">
-                            <img src="./assets/images/man-1.jpg" alt="Patient" class="profile-img">
+                            <img src="../../assets/images/man-1.jpg" alt="Patient" class="profile-img">
                         </div>
                     </div>
                 </div>
@@ -75,19 +74,19 @@
                     <h4 class="sm-4">Medical Information</h4>
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#vitals">Vitals</a>
+                            <a class="nav-link medical active" href="#vitals">Vitals</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#diagnosis">Diagnosis</a>
+                            <a class="nav-link medical" href="#diagnosis">Diagnosis</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#medications">Medications</a>
+                            <a class="nav-link medical" href="#medications">Medications</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#allergies">Allergies</a>
+                            <a class="nav-link medical" href="#allergies">Allergies</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#lab-results">Lab Results</a>
+                            <a class="nav-link medical" href="#lab-results">Lab Results</a>
                         </li>
                     </ul>
 
@@ -140,6 +139,10 @@
                         <!-- Lab Results Tab Content-->
                         <div class="tab-pane fade" id="lab-results" role="tabpanel">
                             <p class="text-muted">No recent lab results</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
