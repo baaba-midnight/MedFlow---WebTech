@@ -124,7 +124,20 @@
 
                     <label for="medications" class="form-label mt-4"><b>Current Medications*</b></label>
                     <textarea class="form-control" id="medications" rows="5" maxlength="500" placeholder="List your medications" required></textarea>
-
+                    <div class="row mt-4">
+                          <div class="col">
+                              <label for="status" class="form-label"><b>Status*</b></label>
+                              <select id="status" class="form-select">
+                                  <option value="discharged" >Discharged</option>
+                                  <option value="outpatient">Outpatient</option>
+                                  <option value="inpatient">Inpatient</option>
+                              </select>
+                          </div>
+                          <div class="col">
+                          </div>
+                          <div class="col">
+                          </div>
+                    </div>
                 </form>
             </div>
       
@@ -136,6 +149,7 @@
       
           </div>
         </div>
+      </div>
 
     <!-- Display Patient Information Modal -->
     <?php include "../../templates/patientInfo.php"; ?>
@@ -153,7 +167,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../../assets/js/fetch_patients.js"></script>
-    <script src="../../assets/js/edit-patient.js"></script>
-    <script src="../../assets/js/patientInfo-modal.js"></script>
+    <!-- <script src="../../assets/js/edit-patient.js"></script> -->
+    <script src="../../assets/js/fetch_patient.js"></script>
+
+    <!-- <script src="../../assets/js/patientInfo-modal.js"></script> -->
 </body>
 </html>

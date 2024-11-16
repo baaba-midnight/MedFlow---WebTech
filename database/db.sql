@@ -34,6 +34,7 @@ CREATE TABLE Patients (
     marital_status ENUM('Married', 'Divorced', 'Single', 'Widowed') NOT NULL,
     blood_group ENUM('O', 'A', 'B', 'AB') NOT NULL,
     `status` ENUM('inpatient', 'outpatient', 'discharged') NOT NULL,
+    is_critical BOOLEAN DEFAULT FALSE,
     contact_number VARCHAR(15) NOT NULL,
     address TEXT NOT NULL,
     admission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP

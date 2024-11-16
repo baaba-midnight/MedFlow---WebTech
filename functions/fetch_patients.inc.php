@@ -10,7 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'GET') {
             p.middle_name,
             p.last_name,
             p.email,
-            p.date_of_birth,
             p.marital_status,
             p.blood_group,
             p.contact_number,
