@@ -36,7 +36,7 @@
                                     <h2>24</h2>
                                     <small>+20 more patients than last month</small>
                                 </div>
-                                <button class="see-details align-self-start" id="active-patients">See Details</button>
+                                <button class="see-details align-self-start" id="active-patients" onclick="openModal('patients')">See Details</button>
                             </div>
                         </div>
                     </div>
@@ -157,16 +157,16 @@
             </div>
 
         <!-- Modal See Details -->
-        <div class="modal" id="myModal">
-            <!-- Modal Content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
-            </div>
-        </div>
-        </div>
+        <?php include '../../templates/adminDashboardModal.php' ?>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="../../assets/js/admin-dashboard.js"></script>
+    <script src="../../assets/js/admin-dashboardModal.js"></script>
+    <!-- <script src="../../assets/js/admin-modal.js"></script> -->
 </body>
 </html>
