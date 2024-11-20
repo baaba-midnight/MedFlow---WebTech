@@ -240,3 +240,14 @@ body {
     margin-top: 50px;
     color: white;
 }
+
+.current-patients {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: 20px;
+}
+
+.current-patients h5 {
+    margin-bottom: 1.5rem;
+}
