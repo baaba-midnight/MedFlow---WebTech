@@ -22,17 +22,24 @@ fetch('../../functions/fetch_patients.inc.php')
     if (Array.isArray(data)) {
         // Populate the table with the patient data
         const tableBody = document.getElementById('patientTable').querySelector('tbody');
+        const modals = document.getElementById('modals')
         data.forEach(patient => {
             const row = document.createElement('tr');
+            const modal = document.createElement('div');
+
 
             row.setAttribute('data-id', patient["Patient ID"]);
             // console.log(patient["Patient ID"]);
             age = calculateAge(patient["Age"])
+
+            console.log(age);
+            fullName = patient["first_name"] + ' ' + patient["last_name"]
+            console.log(patient['first_name']);
             
 
             row.innerHTML = `
                 <td>${patient["Patient ID"]}</td>
-                <td>${patient["Full Name"]}</td>
+                <td>${fullName}</td>
                 <td>${age}</td>
                 <td>${patient["Gender"]}</td>
                 <td>${patient["Admission Date"]}</td>
@@ -40,20 +47,20 @@ fetch('../../functions/fetch_patients.inc.php')
                 <td>${patient["Primary Diagnosis"]}</td>
                 <td>
                     <div class="selected-actions" id="selectedActions">
-                        <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#myModal" onclick="openPatientModal()">
+                        <button type="button" class="action-btn edit-btn" data-id="${patient["Patient ID"]}">
                             <span class="action-icon">✏️</span> Edit
                         </button>
-                        <button class="action-btn remove-btn">
+                        <button class="action-btn remove-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
                             <span class="action-icon">🗑️</span> Remove
                         </button>
-                        <button class="action-btn open-btn" onclick="">
+                        <button class="action-btn open-btn" data-bs-toggle="modal" data-bs-target="#displayModal">
                             <span class="action-icon">📂</span> Open
                         </button>
-                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Open modal</button> -->
                     </div>
                 </td>
             `;
             tableBody.appendChild(row);
+
         });
     } else {
         // Handle case where no patients are available

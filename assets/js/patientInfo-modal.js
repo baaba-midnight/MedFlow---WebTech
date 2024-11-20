@@ -1,55 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // add click event listener to each nav link
-    navLinks.forEach(link => {
+    // Tab handling
+    const medicalLinks = document.querySelectorAll('.nav-link.medical');
+    
+    medicalLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-
-            // remove active class from all links and tab panes
-            navLinks.forEach(navLink => {
+            
+            // Remove active class from all links and tab panes
+            medicalLinks.forEach(navLink => {
                 navLink.classList.remove('active');
             });
-
+            
             document.querySelectorAll('.tab-pane').forEach(pane => {
-                pane.classList.remove('active');
-                pane.classList.add('fade');
+                pane.classList.remove('active', 'show');
             });
-
-            // add active class to clicked link
+            
+            // Add active class to clicked link
             this.classList.add('active');
-
-            // get the target tab from href and activate it
+            
+            // Get the target tab from href and activate it
             const tabId = this.getAttribute('href');
             const targetTab = document.querySelector(tabId);
-            targetTab.classList.remove('fade');
-            targetTab.classList.add('active');
+            if (targetTab) {
+                targetTab.classList.add('active', 'show');
+            }
         });
     });
+
+    // Modal handling
+    const displayModal = document.getElementById('displayModal');
+    let bsModal = null;
+
+    async function getInfo() {
+        try {
+            const response = await fetch('../../functions/manage_patient/display_info.inc.php');
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+        }
+    };
 });
-
-function getInfo() {
-    
-}
-
-function openModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'block';
-}
-
-function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-}
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-      closeModal();
-    }
-}

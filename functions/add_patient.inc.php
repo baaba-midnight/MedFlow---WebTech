@@ -9,38 +9,36 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // die($firstName);
 
     $dob = trim($_POST['dob']);
-    $sex = trim($_POST['sex']);
-    // $marialStatus = trim($_POST['marital_status']);
+    $sex = trim($_POST['gender']);
+    $marialStatus = trim($_POST['marital']);
 
-    // $bloodGroup = trim($_POST['blood_group']);
-    // $email = trim($_POST['email']);
+    $bloodGroup = trim($_POST['bgroup']);
+    $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $address = trim($_POST['address']);
     $status = "inpatient";
-    // $medications = trim($_POST['medications']);
-
-    $insuranceProvider = trim($_POST['insuranceProvider']);
-    $policyNumber = trim($_POST['policyNumber']);
+    $medications = trim($_POST['medications']);
 
     if (empty($firstName) || empty($middleName) || empty($lastName)) {
         die("Enter required fields");
     }
 
-    $query = "INSERT INTO patients(first_name, middle_name, last_name, date_of_birth, gender, `status`, contact_number, address, insurance_provider, insurance_policy_number)
-                VALUES (?,?,?,STR_TO_DATE(?, '%Y-%m-%d'),?,?,?,?,?,?)";
+    $query = "INSERT INTO patients(first_name, middle_name, last_name, email, date_of_birth, gender, marital_status, blood_group, `status`, contact_number, address)
+                VALUES (?,?,?,?,STR_TO_DATE(?, '%Y-%m-%d'),?,?,?,?,?,?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param(
         'ssssssssss',
         $firstName,
         $middleName,
         $lastName,
+        $email,
         $dob,
         $sex,
+        $marialStatus,
+        $bloodGroup,
         $status,
         $phone,
-        $address,
-        $insuranceProvider,
-        $policyNumber
+        $address
     );
 
     if ($stmt->execute()) {

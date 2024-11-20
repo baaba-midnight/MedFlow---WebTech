@@ -6,14 +6,23 @@ header('Content-Type: application/json');
 if ($_SERVER["REQUEST_METHOD"] == 'GET') {
     $query = "SELECT
             p.patient_id AS `Patient ID`,
-            CONCAT(p.first_name, ' ', p.last_name) AS `Full Name`,
+            p.first_name,
+            p.middle_name,
+            p.last_name,
+            p.email,
+            p.marital_status,
+            p.blood_group,
+            p.contact_number,
+            p.address,
             p.date_of_birth AS Age,
             p.gender AS Gender,
             p.admission_date AS `Admission Date`,
             p.`status` AS Status,
-            mh.condition_name AS `Primary Diagnosis`
+            mh.condition_name AS `Primary Diagnosis`,
+            m.medication_name
         FROM Patients p
         LEFT JOIN MedicalHistory mh ON p.patient_id = mh.patient_id
+        LEFT JOIN Medications m ON p.patient_id = m.patient_id
         WHERE mh.case_condition = 'active'
         ORDER BY p.patient_id;";
 
