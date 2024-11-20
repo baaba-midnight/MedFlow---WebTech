@@ -157,7 +157,7 @@
             </div>
 
         <!-- Modal See Details -->
-        <?php include '../../templates/adminDashboardModal.php' ?>
+        <?php include '../../templates/doctorDashboardModal.php' ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -165,8 +165,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="../../assets/js/admin-dashboard.js"></script>
-    <script src="../../assets/js/admin-dashboardModal.js"></script>
+    <script src="../../assets/js/doctor-dashboard.js"></script>
+    <script src="../../assets/js/doctor-dashboardModal.js"></script>
     <!-- <script src="../../assets/js/admin-modal.js"></script> -->
 </body>
 </html>
