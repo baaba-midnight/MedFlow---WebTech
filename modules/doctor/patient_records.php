@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/dashboard.css">
 </head>
@@ -49,7 +49,6 @@
                             <th>Age <i class="fas fa-sort"></i></th>
                             <th>Gender <i class="fas fa-sort"></i></th>
                             <th>Admission Date <i class="fas fa-sort"></i></th>
-                            <th>Department</th>
                             <th>Primary Diagnosis</th>
                             <th>Status <i class="fas fa-sort"></i></th>
                             <th>Actions</th>
@@ -66,7 +65,6 @@
                             <td>45</td>
                             <td>Male</td>
                             <td>2023-10-15</td>
-                            <td>Cardiology</td>
                             <td>Hypertension</td>
                             <td>
                                 <span class="badge <?php echo $i % 2 == 0 ? 'bg-danger' : 'bg-success' ?>">
