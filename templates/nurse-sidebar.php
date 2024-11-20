@@ -9,6 +9,7 @@
         <a class="nav-link" href="dashboard.php"><i class="fas fa-home me-2"></i> Dashboard</a>
         <a class="nav-link" href="patient_notes.php"><i class="fas fa-user-injured me-2"></i> Patient Management</a>
         <!-- <a class="nav-link" href="#"><i class="fas fa-file-invoice-dollar me-2"></i> Billing</a> -->
+        <!-- <a class="nav-link" href="appointments.php"><i class="fas fa-file-medical me-2"></i> Appointment Tracker</a> -->
     </nav>
 
     <div class="user-profile">
@@ -17,8 +18,8 @@
         </div>
         <div class="profile-details">
             <h6>Janet Owusu</h6>
-            <p>Nurse</p>
-            <a href="mailto:michael.jerome@medflow.com">j.owusu@medflow.com</a>
+            <p>Admin</p>
+            <a href="mailto:janet.owusu@medflow.com">janet.owusu@medflow.com</a>
         </div>
     </div>
 </div>
