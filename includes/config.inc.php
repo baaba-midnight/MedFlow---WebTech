@@ -1,4 +1,4 @@
-<?php 
+<?php
 $servername = 'localhost';
 $username = 'root';
 $dbname = 'hospital_management';
