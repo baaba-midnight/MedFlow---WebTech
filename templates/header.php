@@ -18,7 +18,7 @@ $buttonContent = $buttonContent ?? '';
 
         <?php if ($buttonContent != ''): ?>
             <?php if ($buttonContent === 'Add Patient'): ?>
-                <button class="btn btn-dark" onclick="openPatientModal()">
+                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addPatientModal">
                     <i class="fas fa-plus"></i><?php echo $buttonContent; ?>
                 </button>
             <?php else: ?>

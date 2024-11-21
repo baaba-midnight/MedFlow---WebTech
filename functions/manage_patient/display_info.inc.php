@@ -1,10 +1,6 @@
 <?php 
 require_once '../../includes/config.inc.php';
 
-header('Content-Type: application/json');
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 function sendResponse($data, $statusCode=200) {
     http_response_code($statusCode);
     echo json_encode($data);
@@ -16,24 +12,32 @@ function handleError($e) {
 }
 
 // get patient basic information
-function getBasicInfoById($patient_id) {
-    global $conn;
+function getBasicInfoById($conn, $patient_id) {
+    $stmt = null; // Initialize to ensure it exists in finally block
 
     try {
-        $query = "SELECT
+        $query = "SELECT 
                 CONCAT(p.first_name, ' ', p.last_name) as full_name,
                 p.patient_id,
+                TIMESTAMPDIFF(YEAR, p.date_of_birth, CURDATE()) as age, 
                 p.gender,
-                TIMESTAMPDIFF(YEAR, p.date_of_birth, CURDATE()) as age,
-                p.status,
-                p.admission_date,
-                p.contact_number as phone,
-                p.address
+                p.email,
+                p.contact_number,
+                GROUP_CONCAT(DISTINCT ds.department_name) as departments,
+                p.`status`,
+                p.admission_date
             FROM Patients p
-            WHERE p.patient_id = ?";
+            LEFT JOIN Appointments a ON p.patient_id = a.patient_id
+            LEFT JOIN Doctors d ON a.doctor_user_id = d.doctor_id
+            LEFT JOIN doctordepartment dd ON d.doctor_id = dd.doctor_id
+            LEFT JOIN departments ds ON dd.department_id = ds.department_name
+            WHERE p.patient_id = ?
+            GROUP BY p.patient_id";
 
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $patient_id);
+
+        $patient_id = (int) $patient_id;
+        $stmt->bind_param('i', $patient_id);
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
@@ -43,17 +47,20 @@ function getBasicInfoById($patient_id) {
                 throw new Exception("No patient found with specified ID");
             }
             return $patient;
+        } else {
+            throw new Exception("Query execution failed: " . $stmt->error);
         }
+        
+        $stmt->close();
+        $conn->close();
     } catch (Exception $e) {
         handleError($e);
+        $stmt->close();
+        $conn->close();
     }
-
-    $stmt->close();
-    $conn->close();
 }
 
-function getCurrentMeds($patient_id) {
-    global $conn;
+function getCurrentMeds($conn, $patient_id) {
 
     try {
         $query = "SELECT 
@@ -74,11 +81,17 @@ function getCurrentMeds($patient_id) {
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            $patientMeds = $result->fetch_assoc();
+            $patientMeds = [];
 
-            if (!$patientMeds) {
+            while ($row = $result->fetch_assoc()) {
+                $patientMeds[] = $row;
+            }
+
+            if (empty($patientMeds)) {
                 return "No patient medications found with specified ID";
             }
+
+            $stmt->close();
             return $patientMeds;
         }
 
@@ -91,9 +104,7 @@ function getCurrentMeds($patient_id) {
     }
 }
 
-function getLabResults($patient_id) {
-    global $conn;
-
+function getLabResults($conn, $patient_id) {
     try {
         $query = "SELECT 
                 lr.test_type,
@@ -113,7 +124,11 @@ function getLabResults($patient_id) {
 
             if ($stmt->execute()) {
                 $result = $stmt->get_result();
-                $patientLabResults = $result->fetch_assoc();
+                $patientLabResults = [];
+
+                while ($row = $result->fetch_assoc()) {
+                    $patientLabResults[] = $row;
+                }
 
                 if (!$patientLabResults) {
                     return "No patient lab results found with specified ID";
@@ -131,8 +146,7 @@ function getLabResults($patient_id) {
     }
 }
 
-function getAllergies($patient_id) {
-    global $conn;
+function getAllergies($conn, $patient_id) {
 
     try {
         $query = "SELECT 
@@ -147,7 +161,11 @@ function getAllergies($patient_id) {
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            $patientAllergies = $result->fetch_assoc();
+            $patientAllergies = [];
+
+            while ($row = $result->fetch_assoc()) {
+                $patientAllergies[] = $row;
+            }
 
             if (!$patientAllergies) {
                 return "No patient allergies found with specified ID";
@@ -164,8 +182,7 @@ function getAllergies($patient_id) {
     }
 }
 
-function getAppointments($patient_id) {
-    global $conn;
+function getAppointments($conn, $patient_id) {
 
     try {
         $query = "SELECT 
@@ -206,9 +223,7 @@ function getAppointments($patient_id) {
     }
 }
 
-function getMedicalHistory($patient_id) {
-    global $conn;
-
+function getMedicalHistory($conn, $patient_id) {
     try {
         $query = "SELECT 
                 mh.condition_name,
@@ -224,12 +239,18 @@ function getMedicalHistory($patient_id) {
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            $patient = $result->fetch_assoc();
+            $medical_history = [];
 
-            if (!$patient) {
+            while ($row = $result->fetch_assoc()) {
+                $medical_history[] = $row;
+            }
+
+            if (empty($medical_history)) {
                 return "No medical history found for patient with specified ID";
             }
-            return $patient;
+
+            $stmt->close();
+            return $medical_history;
         }
 
         $stmt->close();
@@ -241,20 +262,14 @@ function getMedicalHistory($patient_id) {
     }
 }
 
-function getLatestVitals($patient_id) {
-    global $conn;
-
+function getLatestVitals($conn, $patient_id) {
     try {
         $query = "SELECT
                 v.blood_pressure,
                 v.heart_rate,
-                v.temperature,
-                CONCAT(u.first_name, ' ', u.last_name) as recorded_by,
-                v.recorded_date
+                v.temperature
             FROM Vitals v
-            JOIN Users u ON v.recorded_by = u.user_id
             WHERE v.patient_id = ?
-            ORDER BY v.recorded_date DESC
             LIMIT 1;";
 
         $stmt = $conn->prepare($query);
@@ -282,13 +297,13 @@ function getLatestVitals($patient_id) {
 // handle main routing
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $data = [
-        'BasicInfo' => getBasicInfoById($_GET['id']),
-        'CurrentMeds' => getCurrentMeds($_GET['id']),
-        'LabResults' => getLabResults($_GET['id']),
-        'Allergies' => getAllergies($_GET['id']),
-        'Appointments' => getAppointments($_GET['id']),
-        'MedicalHistory' => getMedicalHistory($_GET['id']),
-        'Vitals' => getLatestVitals($_GET['id'])
+        'BasicInfo' => getBasicInfoById($conn, $_GET['id']),
+        'CurrentMeds' => getCurrentMeds($conn, $_GET['id']),
+        'LabResults' => getLabResults($conn, $_GET['id']),
+        'Allergies' => getAllergies($conn, $_GET['id']),
+        'Appointments' => getAppointments($conn, $_GET['id']),
+        'MedicalHistory' => getMedicalHistory($conn, $_GET['id']),
+        'Vitals' => getLatestVitals($conn, $_GET['id'])
     ];
 
     sendResponse($data);

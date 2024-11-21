@@ -1,11 +1,13 @@
 <?php
-include "../includes/config.inc.php";
+include "../../includes/config.inc.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $patientID = $_GET['id'];
 
     if (empty($patientID)) {
-        die("Enter required fields");
+        error_log("No recieved id");
+        echo "error_fields";
+        exit;
     }
 
     $query = "DELETE FROM patients WHERE patient_id = ?";
@@ -13,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     $stmt->bind_param('s', $patientID);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Patient deleted succesfully')</script>";
+        echo "success";
     } else  {
-        echo "<script>alert('Unable to delete patient')</script>";
+        echo "error_delete";
     }
     $stmt->close();
 }

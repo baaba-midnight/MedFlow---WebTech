@@ -5,7 +5,7 @@
                 <!-- Header -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="mb-0">Patient Information</h2>
-                    <span class="status-badge">Inpatient</span>
+                    <span class="status-badge" id="statusInfo">Inpatient</span>
                 </div>
 
                 <!-- Basic Information -->
@@ -16,33 +16,33 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="info-label">Patient ID</div>
-                                    <div class="info-value">P001</div>
+                                    <div class="info-value" id="patientID">P001</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="info-label">Full Name</div>
-                                    <div class="info-value">John Doe</div>
+                                    <div class="info-value" id="patientName">John Doe</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="info-label">Age</div>
-                                    <div class="info-value">45 years</div>
+                                    <div class="info-value" id="patientAge">45 years</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="info-label">Gender</div>
-                                    <div class="info-value">Male</div>
+                                    <div class="info-value" id="patientGender">Male</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="info-label">Department</div>
-                                    <div class="info-value">Cardiology</div>
+                                    <div class="info-value" id="patientDepartment">Cardiology</div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="info-label">Admission Date</div>
-                                    <div class="info-value">2023-10-15</div>
+                                    <div class="info-value" id="patientAdmissionDate">2023-10-15</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 text-center">
+                        <!-- <div class="col-sm-4 text-center">
                             <img src="../../assets/images/man-1.jpg" alt="Patient" class="profile-img">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -52,19 +52,15 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="info-label">Phone</div>
-                            <div class="info-value">+1 (555) 123-4567</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="info-label">Emergency Phone</div>
-                            <div class="info-value">+1 (555) 123-4567</div>
+                            <div class="info-value" id="patientContact">+1 (555) 123-4567</div>
                         </div>
                         <div class="col-sm-6">
                             <div class="info-label">Email</div>
-                            <div class="info-value">john.doe@gmail.com</div>
+                            <div class="info-value" id="patientEmail">john.doe@gmail.com</div>
                         </div>
                         <div class="col-sm-6">
                             <div class="info-label">Address</div>
-                            <div class="info-value">123 Medical Centre Drive, Healthcare City, HC 12345</div>
+                            <div class="info-value" id="patientAddress">123 Medical Centre Drive, Healthcare City, HC 12345</div>
                         </div>
                     </div>
                 </div>
@@ -97,25 +93,25 @@
                                 <div class="col-sm-6">
                                     <div class="vitals-card">
                                         <div class="info-label">Blood Pressure</div>
-                                        <div class="vitals-value">140/90 mmHg</div>
+                                        <div class="vitals-value" id="blood_pressure">140/90 mmHg</div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="vitals-card">
                                         <div class="info-label">Heart Rate</div>
-                                        <div class="vitals-value">78 bpm</div>
+                                        <div class="vitals-value" id="heart_rate">78 bpm</div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="vitals-card">
                                         <div class="info-label">Temperature</div>
-                                        <div class="vitals-value">37.5 °C</div>
+                                        <div class="vitals-value" id="temperature">37.5 °C</div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="vitals-card">
                                         <div class="info-label">SpO2</div>
-                                        <div class="vitals-value">98%</div>
+                                        <div class="vitals-value" id="spo2">98%</div>
                                     </div>
                                 </div>
                             </div>
@@ -123,22 +119,81 @@
 
                         <!-- Diagnosis Tab Content -->
                         <div class="tab-pane fade" id="diagnosis">
-                            <p class="text-muted">No current diagnosis</p>
+                            <p id="diagnosis-message" class="text-muted">No current diagnosis</p>
+
+                            <table id="diagnosis-table" class="table table-striped" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Diagnosis</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="diagnosis-table-body">
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
                         </div>
 
                         <!-- Medications Tab Content -->
                         <div class="tab-pane fade" id="medications">
-                            <p class="text-muted">No current medications</p>
+                            <p id="medications-message" class="text-muted">No current medications</p>
+
+                            <table id="medications-table" class="table table-striped" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Dosage</th>
+                                        <th>Frequency</th>
+                                        <th>Prescribed By</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="medications-table-body">
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
                         </div>
 
                         <!-- Allergies Tab Content -->
                         <div class="tab-pane fade" id="allergies" role="tabpanel">
-                            <p class="text-muted">No known allergies</p>
+                            <p id="allergies-message" class="text-muted">No known allergies</p>
+
+                            <table id="allergies-table" class="table table-striped" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Allergy</th>
+                                        <th>Severity</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="allergies-table-body">
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
                         </div>
 
                         <!-- Lab Results Tab Content-->
                         <div class="tab-pane fade" id="lab-results" role="tabpanel">
-                            <p class="text-muted">No recent lab results</p>
+                            <p id="lab-message" class="text-muted">No recent lab results</p>
+
+                            <table id="lab-table" class="table table-striped" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th>Test Type</th>
+                                        <th>Date</th>
+                                        <th>Result</th>
+                                        <th>Normal Range</th>
+                                        <th>Performed By</th>
+                                        <th>Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="lab-table-body">
+                                    <!-- Rows will be dynamically added here -->
+                                </tbody>
+                            </table>
                         </div>
 
                         <div class="modal-footer">

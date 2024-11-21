@@ -1,5 +1,3 @@
-
-
 function calculateAge(birthDateString) {
     const birthDate = new Date(birthDateString);
     const today = new Date();
@@ -44,16 +42,15 @@ fetch('../../functions/fetch_patients.inc.php')
                 <td>${patient["Gender"]}</td>
                 <td>${patient["Admission Date"]}</td>
                 <td><div class="status ${patient["Status"]}">${patient["Status"]}</div></td>
-                <td>${patient["Primary Diagnosis"]}</td>
                 <td>
                     <div class="selected-actions" id="selectedActions">
                         <button type="button" class="action-btn edit-btn" data-id="${patient["Patient ID"]}">
                             <span class="action-icon">✏️</span> Edit
                         </button>
-                        <button class="action-btn remove-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                        <button class="action-btn remove-btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal" data-id="${patient["Patient ID"]}">
                             <span class="action-icon">🗑️</span> Remove
                         </button>
-                        <button class="action-btn open-btn" data-bs-toggle="modal" data-bs-target="#displayModal">
+                        <button class="action-btn open-btn" data-bs-toggle="modal" data-bs-target="#displayModal" data-id="${patient["Patient ID"]}">
                             <span class="action-icon">📂</span> Open
                         </button>
                     </div>

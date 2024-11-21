@@ -39,7 +39,6 @@
                         <th>Gender</th>
                         <th>Admission Date</th>
                         <th>Status</th>
-                        <th>Primary Diagnosis</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -166,7 +165,7 @@
     <?php 
       $modalTitle = 'Add New Patient';
       $saveButton = 'Add Patient';
-      include '../../templates/add_modal.inc.php';
+      include '../../templates/add_modal.php';
     ?>
 
 

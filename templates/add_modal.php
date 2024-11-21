@@ -1,11 +1,5 @@
-<?php
-$modalTitle = $modalTitle ?? 'Add New Patient';
-$saveButton = $saveButton ?? 'Save';
-
-$fetchData = $fetchData ?? '../functions/add_patient.inc.php';
-?>
-<!-- Form Modal to ADD -->
-<div class="modal fade" id="addModal">
+<!-- Form Modal to ADD patient data -->
+<div class="modal fade" id="addPatientModal">
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
     
@@ -15,9 +9,9 @@ $fetchData = $fetchData ?? '../functions/add_patient.inc.php';
                     <img src="../../assets/images/medflow-logo.png" widtth="200" height="100" alt="MedFlow-logo">
                 </div>
                 
-                <h4 class="modal-title mt-3 mb-2"><b><?php echo $modalTitle; ?></b></h4>
+                <h4 class="modal-title mt-3 mb-2"><b>Add New Patient</b></h4>
                 <div id="alert-container"></div>
-                <form method="POST" id="myForm" action="<?php echo htmlspecialchars($fetchData); ?>">
+                <form method="POST" id="addPatientModal" action="../functions/add_patient.inc.php">
                     <div class="row mt-4">
                         <div class="col">
                         <label for="fname" class="form-label"><b>First Name*</b></label>
@@ -88,7 +82,7 @@ $fetchData = $fetchData ?? '../functions/add_patient.inc.php';
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-custom" id="edit"><?php echo $saveButton; ?></button>
+                <button class="btn btn-custom" id="edit">Save</button>
             </div>
         </div>
     </div>
